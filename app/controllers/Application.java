@@ -3,7 +3,6 @@ package controllers;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.Index;
-import views.html.Page1;
 import views.html.rabbitkekai;
 import views.html.paulinemenczer;
 import views.html.finnmcgill;
@@ -21,36 +20,26 @@ public class Application extends Controller {
     return ok(Index.render("Welcome to the home page."));
   }
   
-  /**
-   * Returns page1, a simple example of a second page to illustrate navigation.
-   * @return The Page1.
-   */
-  public static Result page1() {
-    return ok(Page1.render("Welcome to Page1."));
-    
-  }
   
   /**
-   * Returns page1, a simple example of a second page to illustrate navigation.
-   * @return The Page1.
+   * Returns rabbitkekai, a page relating to the biography of Rabbit Kekai.
+   * @return rabbitkekai.
    */
   public static Result rabbitkekai() {
-    return ok(rabbitkekai.render("Welcome to Page1."));
-    
+    return ok(rabbitkekai.render("Rabbit Kekai"));
   }
   
   /**
-   * Returns page1, a simple example of a second page to illustrate navigation.
-   * @return The Page1.
+   * Returns paulinemenczer, a page relating to the biography of Pauline Menczer.
+   * @return paulinemenczer.
    */
   public static Result paulinemenczer() {
-    return ok(paulinemenczer.render("Welcome to Page1."));
-    
+    return ok(paulinemenczer.render("Pauline Menczer")); 
   }
   
   /**
-   * Returns page1, a simple example of a second page to illustrate navigation.
-   * @return The Page1.
+   * Returns finnmcgill, a page relating to the biography of Finn McGill.
+   * @return finnmcgill.
    */
   public static Result finnmcgill() {
     return ok(finnmcgill.render("Welcome to Page1."));
