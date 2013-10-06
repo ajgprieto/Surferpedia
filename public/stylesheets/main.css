@@ -1,0 +1,51 @@
+.header-image {
+  background-image: url('../images/Surfing.jpg');
+  background-size: cover;
+  height: 350px;
+}
+
+.page-content {
+  padding: 20px;
+}
+
+.carousel-1 {
+  background: url('../images/RabbitKekaiCarousel.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 500px;
+}
+
+.carousel-2 {
+  background: url('../images/PaulineMenczer.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 500px;
+}
+
+.carousel-3 {
+  background: url('../images/FinnMcgill.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 500px;
+}
+
+.Rabbit-Kekai {
+  background: url('../images/RabbitKekai.jpg');
+  background-postition: center;
+  background-size: cover;
+  height: 500px;
+}
+
+.Pauline-Menczer {
+  background: url('../images/PaulineMenczerPage.jpg');
+  background-postition: center;
+  background-size: cover;
+  height: 500px;
+}
+
+.Finn-McGill {
+  background: url('../images/FinnMcGillPage.jpg');
+  background-postition: center;
+  background-size: cover;
+  height: 500px;
+}
