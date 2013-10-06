@@ -1,4 +1,4 @@
-name := "play-dropdown-carousel"
+name := "Surferpedia"
 
 version := "1.0-SNAPSHOT"
 
