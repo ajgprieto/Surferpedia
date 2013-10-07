@@ -36,6 +36,18 @@
   height: 500px;
 }
 
+.carousel-5 {
+  background: url('../images/nikki.jpg');
+  background-size: cover;
+  height: 500px;
+}
+
+.nikkipic {
+ background-image:url('../images/nikki.jpg');
+ background-size:cover;
+ height:300px;
+}
+
 .Rabbit-Kekai {
   background: url('../images/RabbitKekai.jpg');
   background-postition: center;

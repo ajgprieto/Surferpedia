@@ -7,6 +7,7 @@ import views.html.rabbitkekai;
 import views.html.paulinemenczer;
 import views.html.finnmcgill;
 import views.html.kalanidavid;
+import views.html.nikki;
 
 /**
  * Implements the controllers for this application.
@@ -53,6 +54,15 @@ public class Application extends Controller {
    */
   public static Result kalanidavid() {
     return ok(kalanidavid.render("Welcome to Page1."));
+    
+  }
+  
+  /**
+   * Returns nikki, a page relating to the biography of Nikki Van Djik.
+   * @return nikki.
+   */
+  public static Result nikki() {
+    return ok(nikki.render("Welcome to Page1."));
     
   }
 }
