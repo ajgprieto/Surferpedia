@@ -29,6 +29,13 @@
 }
 
 
+.laird {
+  background: url(../images/LairdHamilton.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 385px;
+}
+
 .page-content {
   padding: 10px;
   text-align: center;
@@ -55,6 +62,13 @@ img {
 
 .carousel-3 {
   background: url(../images/noa-mizuno.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 500px;
+}
+
+.carousel-4 {
+  background: url(../images/LairdHamilton.jpg);
   background-size: cover;
   background-position: center;
   height: 500px;
