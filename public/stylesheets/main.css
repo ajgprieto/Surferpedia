@@ -29,6 +29,13 @@
   height: 500px;
 }
 
+.carousel-4 {
+  background: url('../images/KalaniDavid.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 500px;
+}
+
 .Rabbit-Kekai {
   background: url('../images/RabbitKekai.jpg');
   background-postition: center;
@@ -45,6 +52,13 @@
 
 .Finn-McGill {
   background: url('../images/FinnMcGillPage.jpg');
+  background-postition: center;
+  background-size: cover;
+  height: 500px;
+}
+
+.Kalani-David {
+  background: url('../images/KalaniDavidPage.jpg');
   background-postition: center;
   background-size: cover;
   height: 500px;

@@ -6,6 +6,7 @@ import views.html.Index;
 import views.html.rabbitkekai;
 import views.html.paulinemenczer;
 import views.html.finnmcgill;
+import views.html.kalanidavid;
 
 /**
  * Implements the controllers for this application.
@@ -43,6 +44,15 @@ public class Application extends Controller {
    */
   public static Result finnmcgill() {
     return ok(finnmcgill.render("Welcome to Page1."));
+    
+  }
+  
+  /**
+   * Returns kalanidavid, a page relating to the biography of Kalani David.
+   * @return kalanidavid.
+   */
+  public static Result kalanidavid() {
+    return ok(kalanidavid.render("Welcome to Page1."));
     
   }
 }
