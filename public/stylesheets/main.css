@@ -36,6 +36,13 @@
   height: 385px;
 }
 
+.kalani-pic {
+  background: url(../images/kd.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 385px;
+}
+
 .page-content {
   padding: 10px;
   text-align: center;
@@ -69,6 +76,13 @@ img {
 
 .carousel-4 {
   background: url(../images/LairdHamilton.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 500px;
+}
+
+.carousel-5 {
+  background: url(../images/kd.jpg);
   background-size: cover;
   background-position: center;
   height: 500px;

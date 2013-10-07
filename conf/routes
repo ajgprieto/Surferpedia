@@ -9,6 +9,7 @@ GET     /koloheandino                      controllers.Application.koloheandino(
 GET     /keliamoniz                     controllers.Application.keliamoniz()
 GET     /noa                         controllers.Application.noa()
 GET     /laird                         controllers.Application.laird()
+GET     /kalanid                        controllers.Application.kalanid()
 
 
 # Map static resources from the /public folder to the /assets URL path

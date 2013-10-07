@@ -8,6 +8,7 @@ import views.html.koloheandino;
 import views.html.keliamoniz;
 import views.html.noa;
 import views.html.laird;
+import views.html.kalanid;
 
 /**
  * Implements the controllers for this application.
@@ -64,6 +65,15 @@ public class Application extends Controller {
    */
   public static Result laird() {
     return ok(laird.render("Welcome to Page1."));
+    
+  }
+  
+  /**
+   * Returns page1, a simple example of a second page to illustrate navigation.
+   * @return The Page1.
+   */
+  public static Result kalanid() {
+    return ok(kalanid.render("Welcome to Page1."));
     
   }
 }
