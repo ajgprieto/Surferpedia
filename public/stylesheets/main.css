@@ -42,6 +42,12 @@
   height: 500px;
 }
 
+.carousel-6 {
+  background: url('../images/JohnMelPage.jpg');
+  background-size: cover;
+  height: 500px;
+}
+
 .nikkipic {
  background-image:url('../images/nikki.jpg');
  background-size:cover;
@@ -71,6 +77,13 @@
 
 .Kalani-David {
   background: url('../images/KalaniDavidPage.jpg');
+  background-postition: center;
+  background-size: cover;
+  height: 500px;
+}
+
+.John-Mel {
+  background-image: url('../images/JohnMelPage.jpg');
   background-postition: center;
   background-size: cover;
   height: 500px;

@@ -8,6 +8,7 @@ import views.html.paulinemenczer;
 import views.html.finnmcgill;
 import views.html.kalanidavid;
 import views.html.nikki;
+import views.html.johnmel;
 
 /**
  * Implements the controllers for this application.
@@ -63,6 +64,15 @@ public class Application extends Controller {
    */
   public static Result nikki() {
     return ok(nikki.render("Welcome to Page1."));
+    
+  }
+  
+  /**
+   * Returns johnmel, a page relating to the biography of John Mel.
+   * @return johnmel.
+   */
+  public static Result johnmel() {
+    return ok(johnmel.render("Welcome to Page1."));
     
   }
 }
