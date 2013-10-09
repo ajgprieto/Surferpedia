@@ -9,6 +9,7 @@ import views.html.keliamoniz;
 import views.html.noa;
 import views.html.laird;
 import views.html.kalanid;
+import views.html.malia;
 
 /**
  * Implements the controllers for this application.
@@ -74,6 +75,15 @@ public class Application extends Controller {
    */
   public static Result kalanid() {
     return ok(kalanid.render("Welcome to Page1."));
+    
+  }
+  
+  /**
+   * Returns mmanuel, a page about Malia Manuel.
+   * @return The mmanuel.
+   */
+  public static Result malia() {
+    return ok(malia.render("Welcome to Malia Manuel."));
     
   }
 }

@@ -87,3 +87,10 @@ img {
   background-position: center;
   height: 500px;
 }
+
+.manuel {
+  background-image:url('../images/malia.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+}
