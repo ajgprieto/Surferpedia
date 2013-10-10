@@ -3,14 +3,14 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.Application.index()
-GET     /page1                           controllers.Application.page1()
-GET     /koloheandino                      controllers.Application.koloheandino()
-GET     /keliamoniz                     controllers.Application.keliamoniz()
-GET     /noa                         controllers.Application.noa()
-GET     /laird                         controllers.Application.laird()
-GET     /kalanid                        controllers.Application.kalanid()
-GET     /malia                      controllers.Application.malia()
+GET     /                           controllers.Application.Index()
+GET     /Page1                           controllers.Application.Page1()
+GET     /Koloheandino                      controllers.Application.Koloheandino()
+GET     /Keliamoniz                     controllers.Application.Keliamoniz()
+GET     /Noa                         controllers.Application.Noa()
+GET     /Laird                         controllers.Application.Laird()
+GET     /Kalanid                        controllers.Application.Kalanid()
+GET     /Malia                      controllers.Application.Malia()
 
 
 # Map static resources from the /public folder to the /assets URL path

@@ -4,12 +4,12 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.Index;
 import views.html.Page1;
-import views.html.koloheandino;
-import views.html.keliamoniz;
-import views.html.noa;
-import views.html.laird;
-import views.html.kalanid;
-import views.html.malia;
+import views.html.Koloheandino;
+import views.html.Keliamoniz;
+import views.html.Noa;
+import views.html.Laird;
+import views.html.Kalanid;
+import views.html.Malia;
 
 /**
  * Implements the controllers for this application.
@@ -20,7 +20,7 @@ public class Application extends Controller {
    * Returns the home page. 
    * @return The resulting home page. 
    */
-  public static Result index() {
+  public static Result Index() {
     return ok(Index.render("Welcome to the home page."));
   }
   
@@ -28,62 +28,62 @@ public class Application extends Controller {
    * Returns page1, a simple example of a second page to illustrate navigation.
    * @return The Page1.
    */
-  public static Result page1() {
+  public static Result Page1() {
     return ok(Page1.render("Welcome to Page1."));
     
   }
  
   /**
-   * Returns page1, a simple example of a second page to illustrate navigation.
-   * @return The Page1.
+   * Returns page of Koloheandino.
+   * @return The Koloheandino.
    */
-  public static Result koloheandino() {
-    return ok(koloheandino.render("Welcome to Page1."));
+  public static Result Koloheandino() {
+    return ok(Koloheandino.render("Kolohe Andino."));
     
   }
   
   /**
-   * Returns page1, a simple example of a second page to illustrate navigation.
-   * @return The Page1.
+   * Returns page of Kelia Moniz.
+   * @return The Keliamoniz.
    */
-  public static Result keliamoniz() {
-    return ok(keliamoniz.render("Welcome to Page1."));
+  public static Result Keliamoniz() {
+    return ok(Keliamoniz.render("Kelia Moniz"));
     
   }
   
   /**
-   * Returns page1, a simple example of a second page to illustrate navigation.
-   * @return The Page1.
+   * Returns page of Noa Mizuno
+   * @return The Noa.
    */
-  public static Result noa() {
-    return ok(noa.render("Welcome to Page1."));
+  public static Result Noa() {
+    return ok(Noa.render("Noa Mizuno"));
     
   }
   
   /**
-   * Returns page1, a simple example of a second page to illustrate navigation.
-   * @return The Page1.
+   * Returns page of Laird.
+   * @return The Laird.
    */
-  public static Result laird() {
-    return ok(laird.render("Welcome to Page1."));
+  public static Result Laird() {
+    return ok(Laird.render("Laird Hamilton"));
     
   }
   
   /**
-   * Returns page1, a simple example of a second page to illustrate navigation.
-   * @return The Page1.
+   * Returns page of Kalanid
+   * @return The Kalanid.
    */
-  public static Result kalanid() {
-    return ok(kalanid.render("Welcome to Page1."));
+  public static Result Kalanid() {
+    return ok(Kalanid.render("Kalani David"));
     
   }
   
   /**
-   * Returns mmanuel, a page about Malia Manuel.
-   * @return The mmanuel.
+   * Returns page of Malia Manuel.
+   * @return The Malia.
    */
-  public static Result malia() {
-    return ok(malia.render("Welcome to Malia Manuel."));
+  public static Result Malia() {
+    return ok(Malia.render("Malia Manuel."));
     
   }
 }
