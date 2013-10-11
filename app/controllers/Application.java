@@ -20,7 +20,7 @@ public class Application extends Controller {
    * @return The resulting home page. 
    */
   public static Result index() {
-    return ok(Index.render("Welcome to the home page."));
+    return ok(Index.render());
   }
   
   
@@ -29,7 +29,7 @@ public class Application extends Controller {
    * @return rabbitkekai.
    */
   public static Result rabbitkekai() {
-    return ok(RabbitKekai.render("Rabbit Kekai"));
+    return ok(RabbitKekai.render());
   }
   
   /**
@@ -37,7 +37,7 @@ public class Application extends Controller {
    * @return paulinemenczer.
    */
   public static Result paulinemenczer() {
-    return ok(PaulineMenczer.render("Pauline Menczer")); 
+    return ok(PaulineMenczer.render()); 
   }
   
   /**
@@ -45,7 +45,7 @@ public class Application extends Controller {
    * @return finnmcgill.
    */
   public static Result finnmcgill() {
-    return ok(FinnMcGill.render("Finn McGill."));
+    return ok(FinnMcGill.render());
     
   }
   
@@ -54,7 +54,7 @@ public class Application extends Controller {
    * @return kalanidavid.
    */
   public static Result kalanidavid() {
-    return ok(KalaniDavid.render("Kalani David"));
+    return ok(KalaniDavid.render());
     
   }
   
@@ -63,7 +63,7 @@ public class Application extends Controller {
    * @return nikki.
    */
   public static Result nikki() {
-    return ok(Nikki.render("Nikki Van Djik"));
+    return ok(Nikki.render());
     
   }
   
@@ -72,7 +72,7 @@ public class Application extends Controller {
    * @return johnmel.
    */
   public static Result johnmel() {
-    return ok(JohnMel.render("John Mel"));
+    return ok(JohnMel.render());
     
   }
 }
