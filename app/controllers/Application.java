@@ -3,12 +3,12 @@ package controllers;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.Index;
-import views.html.rabbitkekai;
-import views.html.paulinemenczer;
-import views.html.finnmcgill;
-import views.html.kalanidavid;
-import views.html.nikki;
-import views.html.johnmel;
+import views.html.RabbitKekai;
+import views.html.PaulineMenczer;
+import views.html.FinnMcGill;
+import views.html.KalaniDavid;
+import views.html.Nikki;
+import views.html.JohnMel;
 
 /**
  * Implements the controllers for this application.
@@ -29,7 +29,7 @@ public class Application extends Controller {
    * @return rabbitkekai.
    */
   public static Result rabbitkekai() {
-    return ok(rabbitkekai.render("Rabbit Kekai"));
+    return ok(RabbitKekai.render("Rabbit Kekai"));
   }
   
   /**
@@ -37,7 +37,7 @@ public class Application extends Controller {
    * @return paulinemenczer.
    */
   public static Result paulinemenczer() {
-    return ok(paulinemenczer.render("Pauline Menczer")); 
+    return ok(PaulineMenczer.render("Pauline Menczer")); 
   }
   
   /**
@@ -45,7 +45,7 @@ public class Application extends Controller {
    * @return finnmcgill.
    */
   public static Result finnmcgill() {
-    return ok(finnmcgill.render("Welcome to Page1."));
+    return ok(FinnMcGill.render("Finn McGill."));
     
   }
   
@@ -54,7 +54,7 @@ public class Application extends Controller {
    * @return kalanidavid.
    */
   public static Result kalanidavid() {
-    return ok(kalanidavid.render("Welcome to Page1."));
+    return ok(KalaniDavid.render("Kalani David"));
     
   }
   
@@ -63,7 +63,7 @@ public class Application extends Controller {
    * @return nikki.
    */
   public static Result nikki() {
-    return ok(nikki.render("Welcome to Page1."));
+    return ok(Nikki.render("Nikki Van Djik"));
     
   }
   
@@ -72,7 +72,7 @@ public class Application extends Controller {
    * @return johnmel.
    */
   public static Result johnmel() {
-    return ok(johnmel.render("Welcome to Page1."));
+    return ok(JohnMel.render("John Mel"));
     
   }
 }

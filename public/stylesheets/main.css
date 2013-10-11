@@ -8,41 +8,41 @@
   padding: 20px;
 }
 
-.carousel-1 {
+.kekai {
   background: url('../images/RabbitKekaiCarousel.jpg');
   background-size: cover;
   background-position: center;
   height: 500px;
 }
 
-.carousel-2 {
+.menczer {
   background: url('../images/PaulineMenczer.jpg');
   background-size: cover;
   background-position: center;
   height: 500px;
 }
 
-.carousel-3 {
+.mcgill {
   background: url('../images/FinnMcgill.jpg');
   background-size: cover;
   background-position: center;
   height: 500px;
 }
 
-.carousel-4 {
+.david {
   background: url('../images/KalaniDavid.jpg');
   background-size: cover;
   background-position: center;
   height: 500px;
 }
 
-.carousel-5 {
+.nikki {
   background: url('../images/nikki.jpg');
   background-size: cover;
   height: 500px;
 }
 
-.carousel-6 {
+.mel {
   background: url('../images/JohnMelPage.jpg');
   background-size: cover;
   height: 500px;
