@@ -1,0 +1,19 @@
+@(surfer: Surfer)
+
+@Main("@surfer.getName") {
+<div class="row page-content">
+  <div class="col-md-4">
+    <div class="well">
+      <div class="bio-image" style="background-image: url('@surfer.getBioURL()')"></div>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <div class="well">
+      <h1>@surfer.getName()</h1>
+      <h2>Home Town: </h2><h3>@surfer.getHome()</h3>
+      <h2>Awards: </h2><h3>@surfer.getAwards()</h3>
+      <h2>Biography: </h2><h3>@surfer.getBio()</h3>
+    </div>
+  </div>
+</div>
+}

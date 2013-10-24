@@ -1,0 +1,56 @@
+@(surferForm: Form[views.formdata.SurferFormData],
+  surferTypes: Map[String, Boolean],
+  surfer: List[Surfer])
+
+ @import bootstrap3._ 
+ @import helper._
+ 
+ @Main("Home") {
+    @form(routes.Application.postSurfer(), 'class -> "form-horizontal") {
+
+    @text(surferForm("name"), 
+           label="Name",
+           placeholder="Kelly Slater",
+           help="The name of the surfer." )
+           
+    @text(surferForm("home"),
+           label="Home",
+           placeholder="Cocoa Beach, Florida",
+           help="Where this surfer hails from.")
+           
+           
+    @text(surferForm("awards"),
+           label="Awards",
+           placeholder="ASP World Tour (11) times, Boost Mobile Pro (1st Place, 2007).",
+           help="List titles and other surfing awards.")
+           
+    @text(surferForm("carouselURL"),
+           label="Carousel URL",
+           placeholder="http://exampe.com/picture.jpg",
+           help="A URL to the picture to be presented in the home page carousel for this surfer.")
+           
+    @text(surferForm("bioURL"),
+           label="Bio URL",
+           placeholder="http://exampe.com/picture.jpg",
+           help="A URL to the picture to be presented in the bio page for this surfer.")
+           
+    @bootstrap3.textarea(surferForm("bio"),
+           label="bio",
+           rows="5",
+           placeholder="Bio statement goes here.",
+           help="A paragraph description of this surfer.")
+    
+   
+    @bootstrap3.select(surferForm("surferType"),
+           label="Type",
+           optionMap=surferTypes,
+           isMultiple=false,
+           help="The type of surfer for placement in the menubar.")
+
+<div class="form-group">
+  <div class="col-sm-offset-2 col-sm-10">
+    <button type="submit" class="btn btn-default">Add</button>
+  </div>
+</div>
+    } 
+}

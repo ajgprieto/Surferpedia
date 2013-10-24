@@ -1,14 +1,14 @@
 package controllers;
 
+import models.SurferDB;
+import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
+import views.formdata.SurferFormData;
+import views.formdata.SurferTypes;
+import views.html.ShowSurfer;
 import views.html.Index;
-import views.html.RabbitKekai;
-import views.html.PaulineMenczer;
-import views.html.FinnMcGill;
-import views.html.KalaniDavid;
-import views.html.Nikki;
-import views.html.JohnMel;
+import views.html.ManageSurfer;
 
 /**
  * Implements the controllers for this application.
@@ -25,54 +25,33 @@ public class Application extends Controller {
   
   
   /**
-   * Returns rabbitkekai, a page relating to the biography of Rabbit Kekai.
-   * @return rabbitkekai.
+   * Returns newcontact, a page that simulates an add contact page.
+   * 
+   * @param id the id of the Contact
+   * 
+   * @return The NewContact.
    */
-  public static Result rabbitkekai() {
-    return ok(RabbitKekai.render());
+  public static Result newSurfer() {
+    Form<SurferFormData> formData = Form.form(SurferFormData.class);
+    return ok(ManageSurfer.render(formData, SurferTypes.getTypes(), SurferDB.getSurfers()));
+  }
+
+  /**
+   * Posts the surfer on the page.
+   * 
+   * @return the page containing the surfer.
+   */
+  public static Result postSurfer() {
+    Form<SurferFormData> formData = Form.form(SurferFormData.class).bindFromRequest();
+        
+    if (formData.hasErrors()) {
+      return badRequest(ManageSurfer.render(formData, SurferTypes.getTypes(), SurferDB.getSurfers()));
+    }
+    else {
+      SurferFormData data = formData.get();
+      SurferDB.add(data);
+      return ok(ManageSurfer.render(formData, SurferTypes.getTypes(), SurferDB.getSurfers()));
+    }
   }
   
-  /**
-   * Returns paulinemenczer, a page relating to the biography of Pauline Menczer.
-   * @return paulinemenczer.
-   */
-  public static Result paulinemenczer() {
-    return ok(PaulineMenczer.render()); 
-  }
-  
-  /**
-   * Returns finnmcgill, a page relating to the biography of Finn McGill.
-   * @return finnmcgill.
-   */
-  public static Result finnmcgill() {
-    return ok(FinnMcGill.render());
-    
-  }
-  
-  /**
-   * Returns kalanidavid, a page relating to the biography of Kalani David.
-   * @return kalanidavid.
-   */
-  public static Result kalanidavid() {
-    return ok(KalaniDavid.render());
-    
-  }
-  
-  /**
-   * Returns nikki, a page relating to the biography of Nikki Van Djik.
-   * @return nikki.
-   */
-  public static Result nikki() {
-    return ok(Nikki.render());
-    
-  }
-  
-  /**
-   * Returns johnmel, a page relating to the biography of John Mel.
-   * @return johnmel.
-   */
-  public static Result johnmel() {
-    return ok(JohnMel.render());
-    
-  }
 }
