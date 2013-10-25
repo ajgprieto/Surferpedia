@@ -8,19 +8,14 @@ import views.formdata.SurferFormData;
 
 /**
  * Creates a simple database of surfers.
+ * 
  * @author AJ
- *
+ * 
  */
 public class SurferDB {
 
-  /**Map contain the surfers and their slugs.*/
+  /** Map contain the surfers and their slugs. */
   public static Map<String, Surfer> surfers = new HashMap<>();
-  /**Map containing the male surfers.*/
-  public static Map<String, Surfer> maleSurfers = new HashMap<>();
-  /**Map containing the female surfers.*/
-  public static Map<String, Surfer> femaleSurfers = new HashMap<>();
-  /**Map containing the groms.*/
-  public static Map<String, Surfer> gromSurfers = new HashMap<>();
 
   /**
    * Adds a surfer to the Map with the given data and theirs slug value.
@@ -30,20 +25,10 @@ public class SurferDB {
   public static void add(SurferFormData data) {
     Surfer surfer =
         new Surfer(data.name, data.home, data.awards, data.carouselURL, data.bioURL, data.bio, data.slug, data.type);
-    
+
     surfers.put(data.slug, surfer);
-    
-    if (data.type.equalsIgnoreCase("male")) {
-      maleSurfers.put(data.slug, surfer);
-    }
-    else if (data.type.equalsIgnoreCase("female")) {
-      femaleSurfers.put(data.slug, surfer);
-    }
-    else {
-      gromSurfers.put(data.slug, surfer);
-    }
   }
-  
+
   /**
    * Returns the surfer who belongs to the slug.
    * 
@@ -57,31 +42,34 @@ public class SurferDB {
     }
     return surfer;
   }
-  
+
   /**
    * Returns a ArrayList containing all of the surfers.
+   * 
    * @return an ArrayList containing all of the surfers.
    */
-  public static List<Surfer> getSurfers() {
+  public static List<Surfer> getSurferList() {
     return new ArrayList<>(surfers.values());
   }
 
   /**
-   * Returns a List of the surfers corresponding to the given type.
+   * Checks to see if the slug is contained in the Map.
    * 
-   * @param type the type of surfer
-   * @return the list containing the surfers
+   * @param slug the slug to be checked.
+   * @return true if it contains the slug.
    */
-  public static List<Surfer> getSurfers(String type) {
-    if (type.equalsIgnoreCase("male")) {
-      return new ArrayList<>(maleSurfers.values());
-    }
-    else if (type.equalsIgnoreCase("female")) {
-      return new ArrayList<>(femaleSurfers.values());
-    }
-    else {
-      return new ArrayList<>(gromSurfers.values());
-    }
+  public static boolean checkSlug(String slug) {
+    Surfer surfer = surfers.get(slug);
+    return !(surfer == null);
   }
-  
+
+  /**
+   * Deletes the surfer from the Map.
+   * 
+   * @param slug the slug of the surfer to be deleted.
+   */
+  public static void deleteSurfer(String slug) {
+    surfers.remove(slug);
+  }
+
 }

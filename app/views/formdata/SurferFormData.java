@@ -2,43 +2,52 @@ package views.formdata;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 import models.Surfer;
+import models.SurferDB;
 import play.data.validation.ValidationError;
 
 /**
  * Simple surfer form data.
  * 
  * @author AJ
- *
+ * 
  */
 public class SurferFormData {
 
-  /**Surfer's name.*/
+  /** Surfer's name. */
   public String name = "";
-  
-  /**Sufer's hometown.*/
+
+  /** Sufer's hometown. */
   public String home = "";
-  
-  /**Surfer's awards.*/
+
+  /** Surfer's awards. */
   public String awards = "";
-  
-  /**Surfer's carousel picture.*/
+
+  /** Surfer's carousel picture. */
   public String carouselURL = "";
-  
-  /**Surfer's bio picture.*/
+
+  /** Surfer's bio picture. */
   public String bioURL = "";
-  
-  /**Surfer's bio.*/
+
+  /** Surfer's bio. */
   public String bio = "";
-  
-  /**Surfer's slug.*/
+
+  /** Surfer's slug. */
   public String slug = "";
-  
-  /**Surfer's type.*/
+
+  /** Surfer's type. */
   public String type = "";
-  
+
+  /**
+   * Empty, no argument constructor.
+   */
+  public SurferFormData() {
+  }
+
   /**
    * Creates a SurferFormData from the information given by surfer.
+   * 
    * @param surfer the surfer
    */
   public SurferFormData(Surfer surfer) {
@@ -51,15 +60,16 @@ public class SurferFormData {
     this.slug = surfer.getSlug();
     this.type = surfer.getType();
   }
+
   /**
    * Validates that all the entered fields are correct.
    * 
    * @return error the List of errors if any.
    */
   public List<ValidationError> validate() {
-    
+
     List<ValidationError> error = new ArrayList<>();
-    
+
     if (name == null || name.length() == 0) {
       error.add(new ValidationError("name", "Name is required."));
     }
@@ -75,7 +85,15 @@ public class SurferFormData {
     if (bio == null || bio.length() == 0) {
       error.add(new ValidationError("bio", "Surfer bio is required."));
     }
-    //Validate slug
+    if (slug == null || slug.length() == 0) {
+      error.add(new ValidationError("slug", "Slug is required for URL."));
+    }
+    if (!Pattern.matches("[^0-9a-zA-Z]+", slug)) {
+      error.add(new ValidationError("slug", "Slug must contain only letters or digits."));
+    }
+    if (SurferDB.checkSlug(slug)) {
+      error.add(new ValidationError("slug", "Slug must be unique."));
+    }
     if (!SurferTypes.isType(type)) {
       error.add(new ValidationError("type", "The surfer type is invalid."));
     }

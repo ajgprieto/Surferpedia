@@ -1,6 +1,6 @@
-@(surfer: Surfer)
+@(surfer: Surfer, surfers: List[Surfer])
 
-@Main("@surfer.getName") {
+@Main(surfers) {
 <div class="row page-content">
   <div class="col-md-4">
     <div class="well">
@@ -10,9 +10,13 @@
   <div class="col-md-8">
     <div class="well">
       <h1>@surfer.getName()</h1>
-      <h2>Home Town: </h2><h3>@surfer.getHome()</h3>
-      <h2>Awards: </h2><h3>@surfer.getAwards()</h3>
-      <h2>Biography: </h2><h3>@surfer.getBio()</h3>
+      <p><b>Home Town: </b>@surfer.getHome()</p>
+      <p><b>Awards: </b>>@surfer.getAwards()</p>
+      <p><b>Biography: </b>@surfer.getBio()</p>
+      <p>
+      <a class="pull-left" href="@routes.Application.manageSurfer(surfer.getSlug())">Edit</a>
+      <a class="pull-right" href="@routes.Application.deleteSurfer(surfer.getSlug())">Delete</a>
+      </p>
     </div>
   </div>
 </div>

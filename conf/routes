@@ -4,8 +4,12 @@
 
 # Home page
 GET     /                           controllers.Application.index()
-GET     /                           controllers.Application.newSurfer()
-POST    /                           controllers.Application.postSurfer()
+GET     /new                        controllers.Application.newSurfer()
+GET     /surfer/:slug               controllers.Application.getSurfer(slug)
+GET     /surfer/:slug/delete        controllers.Application.deleteSurfer(slug)
+GET     /surfer/:slug/edit          controllers.Application.manageSurfer(slug)
+POST    /post                       controllers.Application.postSurfer()
+
 
 
 # Map static resources from the /public folder to the /assets URL path

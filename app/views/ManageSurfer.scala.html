@@ -5,7 +5,7 @@
  @import bootstrap3._ 
  @import helper._
  
- @Main("Home") {
+ @Main(surfer) {
     @form(routes.Application.postSurfer(), 'class -> "form-horizontal") {
 
     @text(surferForm("name"), 
@@ -35,11 +35,15 @@
            help="A URL to the picture to be presented in the bio page for this surfer.")
            
     @bootstrap3.textarea(surferForm("bio"),
-           label="bio",
+           label="Bio",
            rows="5",
            placeholder="Bio statement goes here.",
            help="A paragraph description of this surfer.")
     
+    @slug(surferForm("slug"),
+           label="Slug",
+           placeholder="kellyslater",
+           help="Letters and Digits to be used to identify the surfer in the URLs.")
    
     @bootstrap3.select(surferForm("surferType"),
            label="Type",
