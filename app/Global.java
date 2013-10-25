@@ -22,7 +22,7 @@ public class Global extends GlobalSettings {
         "Kolohe Andino (born March 22, 1994 in San Clemente, California) is an American surfer. He began to surf "
         + "at age 10 and holds the record for the most National Scholastic Surfing Association championships won by a"
         + "male competitor (9) . He won both the ASP 6-Star Quicksilver Brazil Open of Surfing[1] and the Vans Pier"
-        + "Classic world tour events in 2011. Andino's sponsors include Oakley eyewear and Hurley wetsuits and clothing.",
+        + "Classic world tour events, 2011. Andino's sponsors include Oakley eyewear and Hurley wetsuits and clothing.",
         "koloheandino", "Male"));
     
     SurferDB.addSurfer(new SurferFormData("Kelia Moniz", "Waikiki, Hawaii", "", 
@@ -30,7 +30,7 @@ public class Global extends GlobalSettings {
         "http://b.vimeocdn.com/ts/301/108/301108760_640.jpg",
         "At eighteen, Kelia is one of the most graceful, carefree, and above all, versatile surfers out there. "
         + "She's equally fluid off the lip or cross-stepping to the nose, whether she's longboarding or shortboarding."
-        + " Kelia makes surfing look fun to surfers and non-surfers alike with her flow and smile, and her mother compares "
+        + " Kelia makes surfing look fun to surfers and non-surfers alike with her flow, and her mother compares "
         + "her surfing style to that of a sassy ballerina.",
         "keliamoniz", "Female"));
     

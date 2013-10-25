@@ -1,7 +1,6 @@
 package controllers;
 
 import java.util.Map;
-import models.Surfer;
 import models.SurferDB;
 import play.data.Form;
 import play.mvc.Controller;
@@ -82,8 +81,9 @@ public class Application extends Controller {
   }
   
   /**
-   * @param <slug>
-   * 
+   * deletes a surfer.
+   * @param slug of surfer
+   * @return Index page
    */
   public static Result deleteSurfer(String slug) {
     SurferDB.deleteSurfer(slug);

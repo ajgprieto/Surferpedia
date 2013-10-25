@@ -38,7 +38,7 @@ public class SurferDB {
   /**
    * Returns a contact instance associated with the passed id, or throws a RuntimeException if the
    * Id is not found.
-   * @param id long
+   * @param slug gets instance of surfer
    * @return Surfer
    * 
    */
@@ -50,22 +50,36 @@ public class SurferDB {
     return surfer;
   }
   
+  /**
+   * deletes a surfer.
+   * @param slug gets instance of surfer
+   */
   public static void deleteSurfer(String slug) {
     surfers.remove(slug);
   }
   
   /**
    * checks to see if a slug already exists.
-   * 
-   * @param slug
-   * @return false if slug is not used or if slug and id match, true otherwise
+   * @param slug gets instance of surfer
+   * @return false if slug is not used, true otherwise
    */
-  public static boolean exists(String slug, long id) {
+  public static boolean exists(String slug) {
     Surfer surfer = surfers.get(slug);
-    long idNum = surfer.getId();
     if (surfer == null) {
       return false;
-    } else if(idNum == id) {
+    } 
+    return true;
+  }
+  
+  /**
+   * checks to see if slug is in edit mode.
+   * @param slug of surfer
+   * @param id of surfer
+   * @return false if id passed matched id of surfer, true if not to execute error
+   */
+  public static boolean isEdit(String slug, long id) {
+    Surfer surfer = surfers.get(slug);
+    if (surfer.getId() == id) {
       return false;
     }
     return true;

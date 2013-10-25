@@ -14,10 +14,15 @@ public class SurferFormData {
   
   /**
    * constructor for global data.
-   * @param firstName first name of contact
-   * @param lastName last name of contact
-   * @param telephone phone number
-   * @param telephoneType type of telephone
+   * @param name of surfer
+   * @param home of surfer
+   * @param awards of surfer
+   * @param carouselUrl of surfer
+   * @param bioUrl of surfer
+   * @param bio of surfer
+   * @param slug of surfer
+   * @param type of surfer
+   * 
    */
   public SurferFormData(String name, String home, String awards, String carouselUrl, String bioUrl, String bio,
       String slug, String type) {
@@ -59,8 +64,8 @@ public class SurferFormData {
   }
   
   /**
-   * creates a new ContactFormdata object.
-   * @param contact contact instance
+   * creates a new SurferFormData object.
+   * @param surfer surfer instance
    */
   public SurferFormData(Surfer surfer) {
     this.id = surfer.getId();
@@ -113,9 +118,8 @@ public class SurferFormData {
       errors.add(new ValidationError("slug", "Slug must contain only digits or characters"));
     }
     
-    if (SurferDB.exists(slug, id)){
+    if (SurferDB.exists(slug) && SurferDB.isEdit(slug, id)) { 
       errors.add(new ValidationError("slug", "Slug must be unique"));
-      System.out.println(slug + " " + id);
     }
     
     if (!SurferTypes.isType(type)) {
