@@ -16,18 +16,26 @@ public class SurferDB {
 
   /** Map contain the surfers and their slugs. */
   public static Map<String, Surfer> surfers = new HashMap<>();
+  public static List<String> slugs = new ArrayList<>();
 
   /**
    * Adds a surfer to the Map with the given data and theirs slug value.
    * 
    * @param data a SurferFormData containing all of the data.
    */
-  public static Surfer add(SurferFormData data) {
-    Surfer surfer =
+  public static void add(SurferFormData data) {
+    Surfer surfer = null;
+    if (!slugs.contains(data.slug)) {
+      surfer =
+          new Surfer(data.name, data.home, data.awards, data.carouselURL, data.bioURL, data.bio, data.slug, data.type);
+      surfers.put(data.slug, surfer);
+      slugs.add(data.slug);
+    }
+    else {
+    surfer =
         new Surfer(data.name, data.home, data.awards, data.carouselURL, data.bioURL, data.bio, data.slug, data.type);
-
     surfers.put(data.slug, surfer);
-    return surfer;
+    }
   }
 
   /**
@@ -60,8 +68,7 @@ public class SurferDB {
    * @return true if it contains the slug.
    */
   public static boolean checkSlug(String slug) {
-    Surfer surfer = surfers.get(slug);
-    return !(surfer == null);
+    return slugs.contains(slug);
   }
 
   /**
@@ -71,6 +78,7 @@ public class SurferDB {
    */
   public static void deleteSurfer(String slug) {
     surfers.remove(slug);
+    slugs.remove(slug);
   }
 
 }

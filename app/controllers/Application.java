@@ -33,7 +33,8 @@ public class Application extends Controller {
   public static Result newSurfer() {
     SurferFormData data = new SurferFormData();
     Form<SurferFormData> formData = Form.form(SurferFormData.class).fill(data);
-    return ok(ManageSurfer.render(formData, SurferTypes.getTypes(data.type), SurferDB.getSurferList()));
+    System.out.println(data.name + " " + data.slug);
+    return ok(ManageSurfer.render(formData, SurferTypes.getTypes(data.type), SurferDB.getSurferList(), "New"));
   }
   
   /**
@@ -45,7 +46,7 @@ public class Application extends Controller {
   public static Result manageSurfer(String slug) {
     SurferFormData data = new SurferFormData(SurferDB.getSurfer(slug));
     Form<SurferFormData> formData = Form.form(SurferFormData.class).fill(data);
-    return ok(ManageSurfer.render(formData, SurferTypes.getTypes(data.type), SurferDB.getSurferList()));
+    return ok(ManageSurfer.render(formData, SurferTypes.getTypes(data.type), SurferDB.getSurferList(), "Edit"));
   }
 
   /**
@@ -57,12 +58,12 @@ public class Application extends Controller {
     Form<SurferFormData> formData = Form.form(SurferFormData.class).bindFromRequest();
     
     if (formData.hasErrors()) {
-      return badRequest(ManageSurfer.render(formData, SurferTypes.getTypes(), SurferDB.getSurferList()));
+      return badRequest(ManageSurfer.render(formData, SurferTypes.getTypes(), SurferDB.getSurferList(), "Post"));
     }
     else {
       SurferFormData data = formData.get();
       SurferDB.add(data);
-      return ok(ManageSurfer.render(formData, SurferTypes.getTypes(data.type), SurferDB.getSurferList()));
+      return ok(ManageSurfer.render(formData, SurferTypes.getTypes(data.type), SurferDB.getSurferList(), "Post"));
     }
   }
   

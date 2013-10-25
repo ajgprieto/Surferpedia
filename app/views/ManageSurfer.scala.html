@@ -1,10 +1,11 @@
-@(surferForm : Form[views.formdata.SurferFormData], surferTypeMap : Map[String, Boolean], surfers: List[Surfer])
+@(surferForm : Form[views.formdata.SurferFormData], surferTypeMap : Map[String, Boolean], surfers: List[Surfer], page: String)
 
 @import helper._ 
 @import bootstrap3._
+@import models._
 
 @Main(surfers) {
-<div class="container">
+
   @form(routes.Application.postSurfer(), 'class -> "form-horizontal"){
     
     @text(surferForm("name"),
@@ -22,12 +23,12 @@
         placeholder = "Awards",
         help = "List titles and other surfing awards")
         
-    @text(surferForm("carouselUrl"),
+    @text(surferForm("carouselURL"),
         label = "Carousel URL",
         placeholder = "http://example.com/picture.jpg",
         help = "A URL to the picture to be presented in the home page carousel for this surfer")
         
-    @text(surferForm("bioUrl"),
+    @text(surferForm("bioURL"),
         label = "Bio URL",
         placeholder = "http://example.com/picture.jpg",
         help = "A URL to the picture to be presented in the bio page for this surfer")
@@ -41,7 +42,8 @@
     @slug(surferForm("slug"),
         label = "Slug",
         placeholder = "kellyslater",
-        help = "Letters and Digits to be used to identify the surfer in URLs")
+        help = "Letters and Digits to be used to identify the surfer in URLs",
+        pageType = page)
         
     @bootstrap3.select(surferForm("type"),
         label = "Type",
@@ -55,5 +57,4 @@
       </div>
     </div>
   }
-</div>
 }
