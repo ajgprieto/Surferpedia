@@ -113,8 +113,9 @@ public class SurferFormData {
       errors.add(new ValidationError("slug", "Slug must contain only digits or characters"));
     }
     
-    if (SurferDB.exists(slug)){
+    if (SurferDB.exists(slug, id)){
       errors.add(new ValidationError("slug", "Slug must be unique"));
+      System.out.println(slug + " " + id);
     }
     
     if (!SurferTypes.isType(type)) {

@@ -41,6 +41,10 @@
         help = "One paragraph description of this surfer")
     
     @if(slugController == "editSurfer") {
+      <input type="hidden"
+           name="id"
+           value="@surferForm("id").value">
+           
       @slug(surferForm("slug"),
           label = "Slug",
           placeholder = "kellyslater",

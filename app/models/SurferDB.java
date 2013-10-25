@@ -56,12 +56,16 @@ public class SurferDB {
   
   /**
    * checks to see if a slug already exists.
+   * 
    * @param slug
-   * @return false if slug does not exist, true if slug exists
+   * @return false if slug is not used or if slug and id match, true otherwise
    */
-  public static boolean exists(String slug) {
+  public static boolean exists(String slug, long id) {
     Surfer surfer = surfers.get(slug);
+    long idNum = surfer.getId();
     if (surfer == null) {
+      return false;
+    } else if(idNum == id) {
       return false;
     }
     return true;
