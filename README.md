@@ -1,4 +1,4 @@
-![screenshot](https://raw.github.com/scotthonda/surferpedia/master/doc/screenshot.jpg)
+![screenshot](https://raw.github.com/scotthonda/surferpedia/dynamic/doc/screenshot.jpg)
 
 Overview
 --------
