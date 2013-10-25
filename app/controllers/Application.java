@@ -33,9 +33,10 @@ public class Application extends Controller {
    */
   public static Result newSurfer() {
     SurferFormData data = new SurferFormData();
+    data.id = 0;
     Form<SurferFormData> formData = Form.form(SurferFormData.class).fill(data);
     Map<String, Boolean> surferTypeMap = SurferTypes.getTypes(data.type);
-    return ok(ManageSurfer.render(formData, surferTypeMap, SurferDB.getSurfer()));
+    return ok(ManageSurfer.render(formData, surferTypeMap, SurferDB.getSurfer(), "newSurfer"));
   }
   
   /**
@@ -47,7 +48,7 @@ public class Application extends Controller {
     SurferFormData data = new SurferFormData(SurferDB.getSurfer(slug));
     Form<SurferFormData> formData = Form.form(SurferFormData.class).fill(data);
     Map<String, Boolean> surferTypeMap = SurferTypes.getTypes(data.type);
-    return ok(ManageSurfer.render(formData, surferTypeMap, SurferDB.getSurfer()));
+    return ok(ManageSurfer.render(formData, surferTypeMap, SurferDB.getSurfer(), "editSurfer"));
   }
 
   /**
@@ -59,7 +60,7 @@ public class Application extends Controller {
     
     if (formData.hasErrors()) {
       Map<String, Boolean> surferTypeMap = SurferTypes.getTypes();
-      return badRequest(ManageSurfer.render(formData, surferTypeMap, SurferDB.getSurfer()));
+      return badRequest(ManageSurfer.render(formData, surferTypeMap, SurferDB.getSurfer(), "other"));
     }
     else {
       SurferFormData data = formData.get();
@@ -67,7 +68,7 @@ public class Application extends Controller {
       Form<SurferFormData> formData2 = Form.form(SurferFormData.class);
       SurferDB.addSurfer(data);
       Map<String, Boolean> surferTypeMap = SurferTypes.getTypes(data.type);
-      return ok(ManageSurfer.render(formData2, surferTypeMap, SurferDB.getSurfer()));
+      return ok(ManageSurfer.render(formData2, surferTypeMap, SurferDB.getSurfer(), "other"));
     }
   }
   

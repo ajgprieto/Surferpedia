@@ -1,7 +1,9 @@
-@(surferForm : Form[views.formdata.SurferFormData], surferTypeMap : Map[String, Boolean], surfers: List[Surfer])
+@(surferForm : Form[views.formdata.SurferFormData], surferTypeMap : Map[String, Boolean], 
+  surfers: List[Surfer], slugController: String)
 
 @import helper._ 
 @import bootstrap3._
+@import models._
 
 @Main(surfers) {
 <div class="container">
@@ -37,12 +39,20 @@
         label = "Bio",
         placeholder = "Bio statement here",
         help = "One paragraph description of this surfer")
-        
-    @slug(surferForm("slug"),
-        label = "Slug",
-        placeholder = "kellyslater",
-        help = "Letters and Digits to be used to identify the surfer in URLs")
-        
+    
+    @if(slugController == "editSurfer") {
+      @slug(surferForm("slug"),
+          label = "Slug",
+          placeholder = "kellyslater",
+          help = "Letters and Digits to be used to identify the surfer in URLs")
+    } else {
+      @slug(surferForm("slug"),
+          label = "New Slug",
+          placeholder = "kellyslater",
+          help = "Letters and Digits to be used to identify the surfer in URLs")
+    }
+    
+    
     @bootstrap3.select(surferForm("type"),
         label = "Type",
         optionMap = surferTypeMap,

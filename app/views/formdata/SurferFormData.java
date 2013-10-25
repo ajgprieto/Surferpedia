@@ -1,6 +1,5 @@
 package views.formdata;
 
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -30,7 +29,7 @@ public class SurferFormData {
     this.bioUrl = bioUrl;
     this.bio = bio;
     this.slug = slug;
-    this.type = type;
+    this.type = type; 
   }
   
   /** the id field. */
