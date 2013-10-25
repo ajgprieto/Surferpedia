@@ -1,5 +1,8 @@
 package test;
 
+import java.util.ArrayList;
+import java.util.List;
+import models.Surfer;
 import org.junit.Test;
 import static org.fest.assertions.Assertions.assertThat;
 import play.mvc.Content;
@@ -22,13 +25,15 @@ public class ApplicationTest {
     int a = 1 + 1;
     assertThat(a).isEqualTo(2);
   }
+  
+  public List<Surfer> fauxList = new ArrayList<>();
 
   /**
    * Illustrates how to render a template for testing.
    */
   @Test
   public void renderTemplate() {
-    Content html = views.html.Index.render("Welcome to the home page.");
+    Content html = views.html.Index.render(fauxList);
     assertThat(contentType(html)).isEqualTo("text/html");
     assertThat(contentAsString(html)).contains("home page");
   }

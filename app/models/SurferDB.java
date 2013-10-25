@@ -16,6 +16,7 @@ public class SurferDB {
 
   /** Map contain the surfers and their slugs. */
   public static Map<String, Surfer> surfers = new HashMap<>();
+  /** A List containing all of the slugs. */
   public static List<String> slugs = new ArrayList<>();
 
   /**
@@ -32,9 +33,9 @@ public class SurferDB {
       slugs.add(data.slug);
     }
     else {
-    surfer =
-        new Surfer(data.name, data.home, data.awards, data.carouselURL, data.bioURL, data.bio, data.slug, data.type);
-    surfers.put(data.slug, surfer);
+      surfer =
+          new Surfer(data.name, data.home, data.awards, data.carouselURL, data.bioURL, data.bio, data.slug, data.type);
+      surfers.put(data.slug, surfer);
     }
   }
 

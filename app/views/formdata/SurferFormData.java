@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 import models.Surfer;
+import models.SurferDB;
 import play.data.validation.ValidationError;
 
 /**
@@ -91,11 +92,9 @@ public class SurferFormData {
     if (!Pattern.matches("[A-Za-z0-9]+$", slug)) {
       error.add(new ValidationError("slug", "Slug must contain only digits or characters"));
     }
-    /**
     if (SurferDB.checkSlug(slug)) {
       error.add(new ValidationError("slug", "Slug must be unique."));
     }
-    */
     if (!SurferTypes.isType(type)) {
       error.add(new ValidationError("type", "The surfer type is invalid."));
     }

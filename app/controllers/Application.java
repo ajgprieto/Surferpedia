@@ -3,28 +3,27 @@ package controllers;
 import models.SurferDB;
 import play.data.Form;
 import play.mvc.Controller;
-import play.mvc.Result; 
+import play.mvc.Result;
 import views.html.Index;
 import views.html.ManageSurfer;
 import views.html.ShowSurfer;
 import views.formdata.SurferFormData;
 import views.formdata.SurferTypes;
 
-
 /**
  * Implements the controllers for this application.
  */
 public class Application extends Controller {
-  
-  
+
   /**
-   * Returns the home page. 
-   * @return The resulting home page. 
+   * Returns the home page.
+   * 
+   * @return The resulting home page.
    */
   public static Result index() {
     return ok(Index.render(SurferDB.getSurferList()));
   }
-  
+
   /**
    * Allows the user to add in a new surfer.
    * 
@@ -33,10 +32,10 @@ public class Application extends Controller {
   public static Result newSurfer() {
     SurferFormData data = new SurferFormData();
     Form<SurferFormData> formData = Form.form(SurferFormData.class).fill(data);
-    System.out.println(data.name + " " + data.slug);
+    System.out.println(data.slug);
     return ok(ManageSurfer.render(formData, SurferTypes.getTypes(data.type), SurferDB.getSurferList(), "New"));
   }
-  
+
   /**
    * Allows the user to edit the surfer's information.
    * 
@@ -56,17 +55,22 @@ public class Application extends Controller {
    */
   public static Result postSurfer() {
     Form<SurferFormData> formData = Form.form(SurferFormData.class).bindFromRequest();
-    
+
     if (formData.hasErrors()) {
       return badRequest(ManageSurfer.render(formData, SurferTypes.getTypes(), SurferDB.getSurferList(), "Post"));
     }
     else {
       SurferFormData data = formData.get();
       SurferDB.add(data);
-      return ok(ManageSurfer.render(formData, SurferTypes.getTypes(data.type), SurferDB.getSurferList(), "Post"));
+      if (SurferDB.checkSlug(data.slug)) {
+        return ok(ManageSurfer.render(formData, SurferTypes.getTypes(data.type), SurferDB.getSurferList(), "Edit"));
+      }
+      else {
+        return ok(ManageSurfer.render(formData, SurferTypes.getTypes(data.type), SurferDB.getSurferList(), "Post"));
+      }
     }
   }
-  
+
   /**
    * Returns the surfer's page that corresponds to the unique slug.
    * 
@@ -76,7 +80,7 @@ public class Application extends Controller {
   public static Result getSurfer(String slug) {
     return ok(ShowSurfer.render(SurferDB.getSurfer(slug), SurferDB.getSurferList()));
   }
-  
+
   /**
    * Deletes a surfer from the page.
    * 
@@ -87,6 +91,5 @@ public class Application extends Controller {
     SurferDB.deleteSurfer(slug);
     return ok(Index.render(SurferDB.getSurferList()));
   }
-  
-}
 
+}
