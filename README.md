@@ -1,9 +1,9 @@
-![screenshot](https://raw.github.com/scotthonda/surferpedia/master/doc/screenshot.png)
+![screenshot](https://raw.github.com/scotthonda/surferpedia/master/doc/screenshot.jpg)
 
 Overview
 --------
 
-A Play application template for a wiki of surfers. Implementing Twitter Bootstrap.
+A Dynamic Play application template for a wiki of surfers. Implementing Twitter Bootstrap.
 
 Installation
 ------------
@@ -15,7 +15,11 @@ at localhost:9000
 Usage
 -----
 
-Use the navbar to find interior pages with bio information on surfers.
+- On the navbar, use the categories (Male, Female, & Grom) to find interior pages with bio 
+information on surfers.
+- On the navbar, use New to access a page where you can input a new surfer to the app.
+- On each surfers page, you can view, delete, or edit each surfer's info.
+
 
 Credits
 -------
