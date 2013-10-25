@@ -1,4 +1,3 @@
-import models.Surfer;
 import models.SurferDB;
 import controllers.Application;
 import play.GlobalSettings;
@@ -18,9 +17,9 @@ public class Global extends GlobalSettings {
    * @param app the Application
    */
   public void onStart(Application app) {
-    SurferDB.add(new SurferFormData(new Surfer("Rabbit Kekai", "Honolulu, HI", "A winner of the Peruvian "
+    SurferDB.add(new SurferFormData("Rabbit Kekai", "Honolulu, HI", "A winner of the Peruvian "
         + "and Makaha International titles during the '50s",
         "http://www.surfersvillage.com/img/news/1009-mr_albert-rabbit-kekai.jpg",
-        "http://www.surfersvillage.com/img/news/1009-mr_albert-rabbit-kekai.jpg", "biO", "rabbitkekai", "Male")));
+        "http://www.surfersvillage.com/img/news/1009-mr_albert-rabbit-kekai.jpg", "biO", "rabbitkekai", "Male"));
   }
 }

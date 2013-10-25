@@ -8,3 +8,14 @@
   padding: 20px;
 }
 
+.carousel-image {
+  background-size: cover;
+  background-position: center;
+  height: 385px;
+}
+
+.bio-image {
+  background-size: cover;
+  background-position: center;
+  height: 250px;
+}

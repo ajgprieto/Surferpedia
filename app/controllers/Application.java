@@ -61,8 +61,9 @@ public class Application extends Controller {
     }
     else {
       SurferFormData data = formData.get();
+      Form<SurferFormData> formData2 = Form.form(SurferFormData.class);
       SurferDB.add(data);
-      return ok(ManageSurfer.render(formData, SurferTypes.getTypes(), SurferDB.getSurferList()));
+      return ok(ManageSurfer.render(formData2, SurferTypes.getTypes(), SurferDB.getSurferList()));
     }
   }
   

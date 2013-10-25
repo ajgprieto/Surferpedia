@@ -22,11 +22,12 @@ public class SurferDB {
    * 
    * @param data a SurferFormData containing all of the data.
    */
-  public static void add(SurferFormData data) {
+  public static Surfer add(SurferFormData data) {
     Surfer surfer =
         new Surfer(data.name, data.home, data.awards, data.carouselURL, data.bioURL, data.bio, data.slug, data.type);
 
     surfers.put(data.slug, surfer);
+    return surfer;
   }
 
   /**
