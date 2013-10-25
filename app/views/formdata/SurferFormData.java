@@ -61,20 +61,7 @@ public class SurferFormData {
     this.type = surfer.getType();
   }
 
-  public SurferFormData(String name, String home, String awards, String carouselURL, String bioURL, String bio,
-      String slug, String type) {
-    super();
-    this.name = name;
-    this.home = home;
-    this.awards = awards;
-    this.carouselURL = carouselURL;
-    this.bioURL = bioURL;
-    this.bio = bio;
-    this.slug = slug;
-    this.type = type;
-
-  }
-
+  
   /**
    * Validates that all the entered fields are correct.
    * 
@@ -83,7 +70,7 @@ public class SurferFormData {
   public List<ValidationError> validate() {
 
     List<ValidationError> error = new ArrayList<>();
-
+    
     if (name == null || name.length() == 0) {
       error.add(new ValidationError("name", "Name is required."));
     }
@@ -102,8 +89,8 @@ public class SurferFormData {
     if (slug == null || slug.length() == 0) {
       error.add(new ValidationError("slug", "Slug is required for URL."));
     }
-    if (!Pattern.matches("[^0-9a-z]", slug)) {
-      error.add(new ValidationError("slug", "Slug should only be letters and numbers."));
+    if (!Pattern.matches("[A-Za-z0-9]+$", slug)) {
+      error.add(new ValidationError("slug", "Slug must contain only digits or characters"));
     }
     if (!SurferTypes.isType(type)) {
       error.add(new ValidationError("type", "The surfer type is invalid."));
