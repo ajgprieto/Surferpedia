@@ -26,6 +26,7 @@ public class ApplicationTest {
     assertThat(a).isEqualTo(2);
   }
   
+  /**A fake list.*/
   public List<Surfer> fauxList = new ArrayList<>();
 
   /**

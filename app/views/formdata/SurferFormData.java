@@ -14,6 +14,9 @@ import play.data.validation.ValidationError;
  * 
  */
 public class SurferFormData {
+  
+  /**The surfer's ID number.*/
+  public long id;
 
   /** Surfer's name. */
   public String name = "";
@@ -51,6 +54,7 @@ public class SurferFormData {
    * @param surfer the surfer
    */
   public SurferFormData(Surfer surfer) {
+    this.id = surfer.getID();
     this.name = surfer.getName();
     this.home = surfer.getHome();
     this.awards = surfer.getAwards();
@@ -92,7 +96,7 @@ public class SurferFormData {
     if (!Pattern.matches("[A-Za-z0-9]+$", slug)) {
       error.add(new ValidationError("slug", "Slug must contain only digits or characters"));
     }
-    if (SurferDB.checkSlug(slug)) {
+    if (SurferDB.checkSlug(slug) && SurferDB.isEdit(slug, id)) {
       error.add(new ValidationError("slug", "Slug must be unique."));
     }
     if (!SurferTypes.isType(type)) {

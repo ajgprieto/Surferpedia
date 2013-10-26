@@ -10,40 +10,56 @@
     
     @text(surferForm("name"),
         label = "Name",
-        placeholder = "Name",
-        help = "The Name of the surfer")
+        placeholder = "Kelly Slater",
+        help = "The name of the surfer.")
   
     @text(surferForm("home"),
         label = "Home",
-        placeholder = "Home",
-        help = "Where the surfer hails from")
+        placeholder = "Cocoa Beach, Florida",
+        help = "Where the surfer hails from.")
         
     @text(surferForm("awards"),
         label = "Awards",
-        placeholder = "Awards",
-        help = "List titles and other surfing awards")
+        placeholder = "ASP World Tour Champion (11 times), Boost Mobile Pro (1st Place, 2007)",
+        help = "List titles and other surfing awards.")
         
     @text(surferForm("carouselURL"),
         label = "Carousel URL",
         placeholder = "http://example.com/picture.jpg",
-        help = "A URL to the picture to be presented in the home page carousel for this surfer")
+        help = "A URL to the picture to be presented in the home page carousel for this surfer.")
         
     @text(surferForm("bioURL"),
         label = "Bio URL",
         placeholder = "http://example.com/picture.jpg",
-        help = "A URL to the picture to be presented in the bio page for this surfer")
+        help = "A URL to the picture to be presented in the bio page for this surfer.")
         
     @bootstrap3.textarea(surferForm("bio"),
-        rows = "16",
+        rows = "15",
         label = "Bio",
-        placeholder = "Bio statement here",
+        placeholder = "Bio statement goes here.",
         help = "One paragraph description of this surfer")
         
-    @slug(surferForm("slug"),
-        label = "Slug",
-        placeholder = "kellyslater",
-        help = "Letters and Digits to be used to identify the surfer in URLs",
-        pageType = page)
+    
+        
+    @if(page == "Edit") {
+         <input type="hidden"
+                name="id"
+                value="@surferForm("id").value">
+        @slug(surferForm("slug"),
+            label = "Slug",
+            placeholder = "kellyslater",
+            help = "Letters and Digits to be used to identify the surfer in URLs",
+            pageType = page)
+    } else {
+        <input type="hidden"
+               name="id"
+               value=0>
+        @slug(surferForm("slug"),
+            label = "Slug",
+            placeholder = "kellyslater",
+            help = "Letters and Digits to be used to identify the surfer in URLs",
+            pageType = page)
+    }
         
     @bootstrap3.select(surferForm("type"),
         label = "Type",

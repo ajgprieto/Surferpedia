@@ -7,6 +7,7 @@ package models;
  */
 public class Surfer {
 
+  private long id;
   private String name;
   private String home;
   private String awards;
@@ -18,6 +19,8 @@ public class Surfer {
 
   /**
    * Creates a new surfer from the given information.
+   * 
+   * @param id the id of the surfer
    * @param name surfer's name
    * @param home surfer's home
    * @param awards surfer's awards
@@ -27,8 +30,9 @@ public class Surfer {
    * @param slug surfer's slug
    * @param type surfer's type
    */
-  public Surfer(String name, String home, String awards, String carouselURL, String bioURL, String bio, String slug,
+  public Surfer(long id, String name, String home, String awards, String carouselURL, String bioURL, String bio, String slug,
       String type) {
+    this.id = id;
     this.name = name;
     this.home = home;
     this.awards = awards;
@@ -37,6 +41,15 @@ public class Surfer {
     this.bio = bio;
     this.slug = slug;
     this.type = type;
+  }
+  
+  /**
+   * Returns the ID for a surfer.
+   * 
+   * @return the unique ID belonging to a surfer.
+   */
+  public long getID() {
+    return id;
   }
 
   /**

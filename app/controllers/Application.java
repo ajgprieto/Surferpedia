@@ -31,6 +31,7 @@ public class Application extends Controller {
    */
   public static Result newSurfer() {
     SurferFormData data = new SurferFormData();
+    data.id = 0;
     Form<SurferFormData> formData = Form.form(SurferFormData.class).fill(data);
     System.out.println(data.slug);
     return ok(ManageSurfer.render(formData, SurferTypes.getTypes(data.type), SurferDB.getSurferList(), "New"));

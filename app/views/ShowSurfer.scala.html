@@ -9,6 +9,7 @@
   </div>
   <div class="col-md-8">
     <div class="well">
+    <div class="page-content">
       <h1>@surfer.getName()</h1>
       <p><b>Home Town: </b>@surfer.getHome()</p>
       <p><b>Awards: </b>@surfer.getAwards()</p>
@@ -17,6 +18,7 @@
       <a class="pull-left" href="@routes.Application.manageSurfer(surfer.getSlug())">Edit</a>
       <a class="pull-right" href="@routes.Application.deleteSurfer(surfer.getSlug())">Delete</a>
       </p>
+      </div>
     </div>
   </div>
 </div>

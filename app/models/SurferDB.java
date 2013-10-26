@@ -27,14 +27,17 @@ public class SurferDB {
   public static void add(SurferFormData data) {
     Surfer surfer = null;
     if (!slugs.contains(data.slug)) {
+      long idVal = (data.id == 0) ? surfers.size() + 1 : data.id;
       surfer =
-          new Surfer(data.name, data.home, data.awards, data.carouselURL, data.bioURL, data.bio, data.slug, data.type);
+          new Surfer(idVal, data.name, data.home, data.awards, data.carouselURL, data.bioURL, data.bio, data.slug,
+              data.type);
       surfers.put(data.slug, surfer);
       slugs.add(data.slug);
     }
     else {
       surfer =
-          new Surfer(data.name, data.home, data.awards, data.carouselURL, data.bioURL, data.bio, data.slug, data.type);
+          new Surfer(data.id, data.name, data.home, data.awards, data.carouselURL, data.bioURL, data.bio, data.slug,
+              data.type);
       surfers.put(data.slug, surfer);
     }
   }
@@ -82,4 +85,18 @@ public class SurferDB {
     slugs.remove(slug);
   }
 
+  /**
+   * Checks to see if the slug and id are already taken.
+   * 
+   * @param slug the unique ID for a surfer.
+   * @param id the unique ID of a surfer.
+   * @return false if a surfer with the ID already exists.
+   */
+  public static boolean isEdit(String slug, long id) {
+    Surfer surfer = surfers.get(slug);
+    if (surfer.getID() == id) {
+      return false;
+    }
+    return true;
+  }
 }
