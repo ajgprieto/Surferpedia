@@ -2,7 +2,7 @@
 
 Overview
 ==============
-A Play Application that provides an encyclopedia of surfers.
+A Play Application that provides an encyclopedia of surfers.  It is now Dynamic.
 
 Installation
 ===============
@@ -10,7 +10,7 @@ Download zip file, unzip, cd into directory, invoke Play console, execute run co
 
 Usage
 ================
-Use the navbar to find interior pages with bio information surfers.
+Use the navbar to find interior pages with bio information surfers.  Now you can add surfers using the "New" page.
 
 Credits
 ==================
