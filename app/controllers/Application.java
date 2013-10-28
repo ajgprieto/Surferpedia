@@ -18,6 +18,7 @@ import views.formdata.SurferTypes;
 public class Application extends Controller {
   
   
+  
   /**
    * Returns the home page. 
    * @return The resulting home page. 
