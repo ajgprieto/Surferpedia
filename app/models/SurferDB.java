@@ -1,6 +1,8 @@
 package models;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,7 +25,20 @@ public class SurferDB {
     long idVal = (formData.id == 0) ? surfers.size() + 1 : formData.id;
     Surfer surfer = new Surfer(idVal, formData.name, formData.home, formData.awards,
         formData.carouselUrl, formData.bioUrl, formData.bio, formData.slug, formData.type);
+    if (SurferDB.exists(formData.slug)) {
+      Date now = new Date();
+      String surferName = formData.name;
+      UpdateDB.addUpdates(new Update(DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT).format(now) +"",
+                          "Edit", surferName));
+    } else {
+      Date now = new Date();
+      String surferName = formData.name;
+      UpdateDB.addUpdates(new Update(DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT).format(now) +"",
+                          "Create", surferName));
+    }
     surfers.put(slugVal, surfer); 
+    
+   
     return surfer;
   }
   
@@ -55,6 +70,10 @@ public class SurferDB {
    * @param slug gets instance of surfer
    */
   public static void deleteSurfer(String slug) {
+    Date now = new Date();
+    String surferName = SurferDB.getSurfer(slug).getName();
+    UpdateDB.addUpdates(new Update(DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT).format(now) +"",
+                        "Delete", surferName));
     surfers.remove(slug);
   }
   

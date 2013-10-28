@@ -1,13 +1,18 @@
 package controllers;
 
+import java.text.DateFormat;
+import java.util.Date;
 import java.util.Map;
 import models.SurferDB;
+import models.Update;
+import models.UpdateDB;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result; 
 import views.html.Index;
 import views.html.ManageSurfer;
 import views.html.ShowSurfer;
+import views.html.Updates;
 import views.formdata.SurferFormData;
 import views.formdata.SurferTypes;
 
@@ -64,6 +69,7 @@ public class Application extends Controller {
     }
     else {
       SurferFormData data = formData.get();
+      
       /** Clears the form when button is clicked */
       Form<SurferFormData> formData2 = Form.form(SurferFormData.class);
       SurferDB.addSurfer(data);
@@ -91,6 +97,12 @@ public class Application extends Controller {
     return ok(Index.render(SurferDB.getSurfer()));
   }
   
+  /**
+   * 
+   */
+  public static Result getUpdates() {
+    return ok(Updates.render(SurferDB.getSurfer(), UpdateDB.getUpdates()));
+  }
 }
 
 
