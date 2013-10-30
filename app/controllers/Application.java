@@ -1,7 +1,9 @@
 package controllers;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 import models.SurferDB;
 import models.Update;
@@ -13,6 +15,7 @@ import views.html.Index;
 import views.html.ManageSurfer;
 import views.html.ShowSurfer;
 import views.html.Updates;
+import views.formdata.FootstyleTypes;
 import views.formdata.SurferFormData;
 import views.formdata.SurferTypes;
 
@@ -41,7 +44,8 @@ public class Application extends Controller {
     data.id = 0;
     Form<SurferFormData> formData = Form.form(SurferFormData.class).fill(data);
     Map<String, Boolean> surferTypeMap = SurferTypes.getTypes(data.type);
-    return ok(ManageSurfer.render(formData, surferTypeMap, SurferDB.getSurfer(), "newSurfer"));
+    List<String> surferStyleList = FootstyleTypes.getStyle();
+    return ok(ManageSurfer.render(formData, surferTypeMap, SurferDB.getSurfer(), "newSurfer", surferStyleList));
   }
   
   /**
@@ -53,7 +57,8 @@ public class Application extends Controller {
     SurferFormData data = new SurferFormData(SurferDB.getSurfer(slug));
     Form<SurferFormData> formData = Form.form(SurferFormData.class).fill(data);
     Map<String, Boolean> surferTypeMap = SurferTypes.getTypes(data.type);
-    return ok(ManageSurfer.render(formData, surferTypeMap, SurferDB.getSurfer(), "editSurfer"));
+    List<String> surferStyleList =  FootstyleTypes.getStyle();
+    return ok(ManageSurfer.render(formData, surferTypeMap, SurferDB.getSurfer(), "editSurfer", surferStyleList));
   }
 
   /**
@@ -65,7 +70,8 @@ public class Application extends Controller {
     
     if (formData.hasErrors()) {
       Map<String, Boolean> surferTypeMap = SurferTypes.getTypes();
-      return badRequest(ManageSurfer.render(formData, surferTypeMap, SurferDB.getSurfer(), "other"));
+      List<String> surferStyleList = FootstyleTypes.getStyle();
+      return badRequest(ManageSurfer.render(formData, surferTypeMap, SurferDB.getSurfer(), "other", surferStyleList));
     }
     else {
       SurferFormData data = formData.get();
@@ -74,7 +80,8 @@ public class Application extends Controller {
       Form<SurferFormData> formData2 = Form.form(SurferFormData.class);
       SurferDB.addSurfer(data);
       Map<String, Boolean> surferTypeMap = SurferTypes.getTypes(data.type);
-      return ok(ManageSurfer.render(formData2, surferTypeMap, SurferDB.getSurfer(), "other"));
+      List<String> surferStyleList = FootstyleTypes.getStyle();
+      return ok(ManageSurfer.render(formData2, surferTypeMap, SurferDB.getSurfer(), "other", surferStyleList));
     }
   }
   

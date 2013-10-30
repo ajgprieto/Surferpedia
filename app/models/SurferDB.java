@@ -24,7 +24,7 @@ public class SurferDB {
     String slugVal = formData.slug;
     long idVal = (formData.id == 0) ? surfers.size() + 1 : formData.id;
     Surfer surfer = new Surfer(idVal, formData.name, formData.home, formData.awards,
-        formData.carouselUrl, formData.bioUrl, formData.bio, formData.slug, formData.type);
+        formData.carouselUrl, formData.bioUrl, formData.bio, formData.slug, formData.type, formData.style);
     if (SurferDB.exists(formData.slug)) {
       Date now = new Date();
       String surferName = formData.name;

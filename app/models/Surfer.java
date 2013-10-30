@@ -17,6 +17,7 @@ public class Surfer {
   private String bio;
   private String slug;
   private String type;
+  private String style;
   
   /**
    * Creates a new surfer.
@@ -31,7 +32,7 @@ public class Surfer {
    * @param type = type of surfer (Male, Female, or Grom)
    */
   public Surfer(long id, String name, String home, String awards, String carouselUrl, String bioUrl,
-                String bio, String slug, String type) {
+                String bio, String slug, String type, String style) {
     this.id = id;
     this.name = name;
     this.home = home;
@@ -41,6 +42,7 @@ public class Surfer {
     this.bio = bio;
     this.slug = slug;
     this.type = type;
+    this.setStyle(style);
   }
   
   /**
@@ -160,6 +162,20 @@ public class Surfer {
    */
   public void setType(String type) {
     this.type = type;
+  }
+
+  /**
+   * @return the style
+   */
+  public String getStyle() {
+    return style;
+  }
+
+  /**
+   * @param style the style to set
+   */
+  public void setStyle(String style) {
+    this.style = style;
   }
 
 }

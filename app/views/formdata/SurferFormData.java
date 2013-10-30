@@ -25,7 +25,7 @@ public class SurferFormData {
    * 
    */
   public SurferFormData(String name, String home, String awards, String carouselUrl, String bioUrl, String bio,
-      String slug, String type) {
+      String slug, String type, String style) {
     super();
     this.name = name;
     this.home = home;
@@ -35,6 +35,7 @@ public class SurferFormData {
     this.bio = bio;
     this.slug = slug;
     this.type = type; 
+    this.style = style;
   }
   
   /** the id field. */
@@ -55,6 +56,8 @@ public class SurferFormData {
   public String slug = "";
   /** the type. */
   public String type = "";
+  /** the style. */
+  public String style = "";
   
   /**
    * default constructor.
@@ -77,6 +80,7 @@ public class SurferFormData {
     this.bio = surfer.getBio();
     this.slug = surfer.getSlug();
     this.type = surfer.getType();
+    this.style = surfer.getStyle();
   }
   
   
