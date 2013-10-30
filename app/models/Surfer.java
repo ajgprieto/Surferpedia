@@ -11,6 +11,7 @@ public class Surfer {
   private String name;
   private String home;
   private String awards;
+  private String footStyle;
   private String carouselURL;
   private String bioURL;
   private String bio;
@@ -30,12 +31,13 @@ public class Surfer {
    * @param slug surfer's slug
    * @param type surfer's type
    */
-  public Surfer(long id, String name, String home, String awards, String carouselURL, String bioURL, String bio, String slug,
+  public Surfer(long id, String name, String home, String awards, String footStyle, String carouselURL, String bioURL, String bio, String slug,
       String type) {
     this.id = id;
     this.name = name;
     this.home = home;
     this.awards = awards;
+    this.footStyle = footStyle;
     this.carouselURL = carouselURL;
     this.bioURL = bioURL;
     this.bio = bio;
@@ -98,6 +100,22 @@ public class Surfer {
    */
   public void setAwards(String awards) {
     this.awards = awards;
+  }
+  
+  /**
+   * Returns the surfer's foot style. 
+   * @return the footstyle
+   */
+  public String getFootStyle() {
+    return footStyle;
+  }
+  
+  /**
+   * Sets the surfer's foot style.
+   * @param footStyle the surfer's new foot style
+   */
+  public void setFootStyle(String footStyle) {
+    this.footStyle = footStyle;
   }
   
   /**

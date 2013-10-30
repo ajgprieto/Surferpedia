@@ -29,14 +29,14 @@ public class SurferDB {
     if (!slugs.contains(data.slug)) {
       long idVal = (data.id == 0) ? surfers.size() + 1 : data.id;
       surfer =
-          new Surfer(idVal, data.name, data.home, data.awards, data.carouselURL, data.bioURL, data.bio, data.slug,
+          new Surfer(idVal, data.name, data.home, data.awards, data.footStyle, data.carouselURL, data.bioURL, data.bio, data.slug,
               data.type);
       surfers.put(data.slug, surfer);
       slugs.add(data.slug);
     }
     else {
       surfer =
-          new Surfer(data.id, data.name, data.home, data.awards, data.carouselURL, data.bioURL, data.bio, data.slug,
+          new Surfer(data.id, data.name, data.home, data.awards, data.footStyle, data.carouselURL, data.bioURL, data.bio, data.slug,
               data.type);
       surfers.put(data.slug, surfer);
     }

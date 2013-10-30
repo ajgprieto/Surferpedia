@@ -25,7 +25,7 @@ public class Global extends GlobalSettings {
                 1,
                 "Rabbit Kekai",
                 "Honolulu, HI",
-                "A winner of the Peruvian " + "and Makaha International titles during the '50s",
+                "A winner of the Peruvian " + "and Makaha International titles during the '50s", "Regular",
                 "http://www.surfersvillage.com/img/news/1009-mr_albert-rabbit-kekai.jpg",
                 "http://www.surfersvillage.com/img/news/1009-mr_albert-rabbit-kekai.jpg",
                 "From Waikiki beach boys to groundbreaking surfer"
@@ -64,7 +64,7 @@ public class Global extends GlobalSettings {
                 2,
                 "Pauline Menczer",
                 "Sydney, Australia",
-                "2002 ASP World Qualifying Series",
+                "2002 ASP World Qualifying Series", "Regular",
                 "http://www.surfersvillage.com/img/news/menczer_fiji_tostee_2.jpg",
                 "http://www.surfline.com/surfaz/images/menczer_pauline/pf_pmenzer_port.jpg",
                 "One of pro surfing's great individuals, Pauline Menzcer won the 1988 world amateur and 1993 professional"
@@ -102,7 +102,7 @@ public class Global extends GlobalSettings {
                 3,
                 "John Mel",
                 "Santa Cruz, CA",
-                "Three National Titles",
+                "Three National Titles", "Regular",
                 "http://www.ocinsite.com/images/uploads/John.jpg",
                 "http://www.norcalsurfers.com/word/wp-content/gallery/rider-john-mel/quiksilver-troyer-copy.jpg",
                 "John Mel was born and raised in the coastal town of Santa Cruz, California into a surfing legacy under his"

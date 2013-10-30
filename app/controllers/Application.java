@@ -7,6 +7,7 @@ import play.mvc.Result;
 import views.html.Index;
 import views.html.ManageSurfer;
 import views.html.ShowSurfer;
+import views.formdata.FootStyles;
 import views.formdata.SurferFormData;
 import views.formdata.SurferTypes;
 
@@ -34,7 +35,7 @@ public class Application extends Controller {
     data.id = 0;
     Form<SurferFormData> formData = Form.form(SurferFormData.class).fill(data);
     System.out.println(data.slug);
-    return ok(ManageSurfer.render(formData, SurferTypes.getTypes(data.type), SurferDB.getSurferList(), "New"));
+    return ok(ManageSurfer.render(formData, FootStyles.getFootStyles(), SurferTypes.getTypes(data.type), SurferDB.getSurferList(), "New"));
   }
 
   /**
@@ -46,7 +47,7 @@ public class Application extends Controller {
   public static Result manageSurfer(String slug) {
     SurferFormData data = new SurferFormData(SurferDB.getSurfer(slug));
     Form<SurferFormData> formData = Form.form(SurferFormData.class).fill(data);
-    return ok(ManageSurfer.render(formData, SurferTypes.getTypes(data.type), SurferDB.getSurferList(), "Edit"));
+    return ok(ManageSurfer.render(formData, FootStyles.getFootStyles(), SurferTypes.getTypes(data.type), SurferDB.getSurferList(), "Edit"));
   }
 
   /**
@@ -58,16 +59,16 @@ public class Application extends Controller {
     Form<SurferFormData> formData = Form.form(SurferFormData.class).bindFromRequest();
 
     if (formData.hasErrors()) {
-      return badRequest(ManageSurfer.render(formData, SurferTypes.getTypes(), SurferDB.getSurferList(), "Post"));
+      return badRequest(ManageSurfer.render(formData, FootStyles.getFootStyles(), SurferTypes.getTypes(), SurferDB.getSurferList(), "Post"));
     }
     else {
       SurferFormData data = formData.get();
       SurferDB.add(data);
       if (SurferDB.checkSlug(data.slug)) {
-        return ok(ManageSurfer.render(formData, SurferTypes.getTypes(data.type), SurferDB.getSurferList(), "Edit"));
+        return ok(ManageSurfer.render(formData, FootStyles.getFootStyles(), SurferTypes.getTypes(data.type), SurferDB.getSurferList(), "Edit"));
       }
       else {
-        return ok(ManageSurfer.render(formData, SurferTypes.getTypes(data.type), SurferDB.getSurferList(), "Post"));
+        return ok(ManageSurfer.render(formData, FootStyles.getFootStyles(), SurferTypes.getTypes(data.type), SurferDB.getSurferList(), "Post"));
       }
     }
   }

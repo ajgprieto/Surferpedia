@@ -1,6 +1,8 @@
 package views.formdata;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class FootStyles {
@@ -8,6 +10,7 @@ public class FootStyles {
   /**An array containing the different types of foot styles.*/
   private static String [] footStyles = {"Regular", "Goofy"};
 
+  
   /**
    * Creates a Map of the footstyles and sets each of them to false.
    * 
@@ -43,5 +46,13 @@ public class FootStyles {
       styles.put(style, true);
     }
     return styles;
+  }
+  
+  /**
+   * Provides a list of foot styles for use in form display.
+   * @return a List containing the  foot styles.
+   */
+  public static List<String> getFootStyles() {
+    return Arrays.asList(footStyles);
   }
 }

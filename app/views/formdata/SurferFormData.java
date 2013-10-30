@@ -26,6 +26,9 @@ public class SurferFormData {
 
   /** Surfer's awards. */
   public String awards = "";
+  
+  /** Surfer's foot style. */
+  public String footStyle = "";
 
   /** Surfer's carousel picture. */
   public String carouselURL = "";
@@ -58,6 +61,7 @@ public class SurferFormData {
     this.name = surfer.getName();
     this.home = surfer.getHome();
     this.awards = surfer.getAwards();
+    this.footStyle = surfer.getFootStyle();
     this.carouselURL = surfer.getCarouselURL();
     this.bioURL = surfer.getBioURL();
     this.bio = surfer.getBio();
