@@ -10,7 +10,7 @@ import views.formdata.SurferFormData;
  *
  */
 public class Global extends GlobalSettings {
-  
+   
   /**
    * Initialize the app with surfers.
    * @param app 
