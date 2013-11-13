@@ -1,6 +1,6 @@
-@(surfers: List[Surfer], updates: List[Update])
+@(page: String, isLoggedIn: Boolean, userInfo: UserInfo, surfers: List[Surfer], updates: List[Update])
 
-@Main(surfers) {
+@Main(page, isLoggedIn, userInfo, surfers) {
    <div class="container">
    <h1>List of updates to Surferpedia</h1>
      <table class="table table-striped table-bordered">
