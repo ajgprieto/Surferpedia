@@ -1,70 +1,36 @@
-@(message: String)
+@(surfers: List[Surfer])
 
-@Main("Home") {
+@Main(surfers) {
    <div class="container">
 
     <div class="well">
-      <div id="carousel-example-generic" class="carousel slide">
+      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
         <ol class="carousel-indicators">
-          <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-          <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-          <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-          <li data-target="#carousel-example-generic" data-slide-to="3"></li>
-          <li data-target="#carousel-example-generic" data-slide-to="4"></li>
-          <li data-target="#carousel-example-generic" data-slide-to="5"></li>
+          @for((surfer, index) <- surfers.zipWithIndex) {
+            <li data-target="#carousel-example-generic" data-slide-to="@index" @if(index == 0){class="active"}></li>
+          }
         </ol>
 
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
-          <div class="item active">
-            <div class="andino"></div>
+        @for((surfer, index) <- surfers.zipWithIndex) {
+          <div class="item @if(index == 0){active}">
+            <div class="carousel-image" style="background-image: url('@surfer.getCarouselUrl()')"></div>
             <div class="carousel-caption">
-              <h3>Kolohe Andino</h3>
+              <h3>@surfer.getName()</h3>
             </div>
           </div>
-          
-          <div class="item">
-            <div class="moniz"></div>
-            <div class="carousel-caption">
-              <h3>Kelia Moniz</h3>
-            </div>
-          </div>
-
-          <div class="item">
-            <div class="noa-carousel"></div>
-            <div class="carousel-caption">
-              <h3>Noa Mizuno</h3>
-            </div>
-          </div>
-          
-           <div class="item">
-            <div class="laird"></div>
-            <div class="carousel-caption">
-              <h3>Laird Hamilton</h3>
-            </div>
-          </div>
-          
-          <div class="item">
-            <div class="kalani-carousel"></div>
-            <div class="carousel-caption">
-              <h3>Kalani David</h3>
-            </div>
-          </div>
-          
-          <div class="item">
-            <div class="manuel"></div>
-            <div class="carousel-caption">
-              <h3>Malia Manuel</h3>
-            </div>
-          </div>
-
-        </div>
+       }
+        
+       </div>
 
         <!-- Controls -->
-        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"> <span class="icon-prev"></span>
-        </a> <a class="right carousel-control" href="#carousel-example-generic" data-slide="next"> <span
-          class="icon-next"></span>
+        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"> 
+          <span class="icon-prev"></span>
+        </a> 
+        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next"> 
+        <span class="icon-next"></span>
         </a>
       </div>
     </div>

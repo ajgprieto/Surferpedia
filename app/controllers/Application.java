@@ -1,89 +1,115 @@
 package controllers;
 
+import java.text.DateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+import models.SurferDB;
+import models.Update;
+import models.UpdateDB;
+import play.data.Form;
 import play.mvc.Controller;
-import play.mvc.Result;
+import play.mvc.Result; 
 import views.html.Index;
-import views.html.Page1;
-import views.html.Koloheandino;
-import views.html.Keliamoniz;
-import views.html.Noa;
-import views.html.Laird;
-import views.html.Kalanid;
-import views.html.Malia;
+import views.html.ManageSurfer;
+import views.html.ShowSurfer;
+import views.html.Updates;
+import views.formdata.FootstyleTypes;
+import views.formdata.SurferFormData;
+import views.formdata.SurferTypes;
+
 
 /**
  * Implements the controllers for this application.
  */
 public class Application extends Controller {
-
+  
+  
+  
   /**
    * Returns the home page. 
    * @return The resulting home page. 
    */
-  public static Result Index() {
-    return ok(Index.render("Welcome to the home page."));
+  public static Result index() {
+    return ok(Index.render(SurferDB.getSurfer()));
   }
   
   /**
-   * Returns page1, a simple example of a second page to illustrate navigation.
-   * @return The Page1.
+   * Returns the Manage Surfer page given that there are no existing surfers.
+   * @return The ManageSurfer page.
    */
-  public static Result Page1() {
-    return ok(Page1.render("Welcome to Page1."));
-    
-  }
- 
-  /**
-   * Returns page of Koloheandino.
-   * @return The Koloheandino.
-   */
-  public static Result Koloheandino() {
-    return ok(Koloheandino.render("Kolohe Andino."));
-    
+  public static Result newSurfer() {
+    SurferFormData data = new SurferFormData();
+    data.id = 0;
+    Form<SurferFormData> formData = Form.form(SurferFormData.class).fill(data);
+    Map<String, Boolean> surferTypeMap = SurferTypes.getTypes(data.type);
+    List<String> surferStyleList = FootstyleTypes.getStyle();
+    return ok(ManageSurfer.render(formData, surferTypeMap, SurferDB.getSurfer(), "newSurfer", surferStyleList));
   }
   
   /**
-   * Returns page of Kelia Moniz.
-   * @return The Keliamoniz.
+   * manageSurfer(String) allows for the edit of an already existing surfer.
+   * @param slug = unique String value of a surfer's slug
+   * @return the ManageSurfer page with fields filled in 
    */
-  public static Result Keliamoniz() {
-    return ok(Keliamoniz.render("Kelia Moniz"));
+  public static Result manageSurfer(String slug) {
+    SurferFormData data = new SurferFormData(SurferDB.getSurfer(slug));
+    Form<SurferFormData> formData = Form.form(SurferFormData.class).fill(data);
+    Map<String, Boolean> surferTypeMap = SurferTypes.getTypes(data.type);
+    List<String> surferStyleList =  FootstyleTypes.getStyle();
+    return ok(ManageSurfer.render(formData, surferTypeMap, SurferDB.getSurfer(), "editSurfer", surferStyleList));
+  }
+
+  /**
+   * handles posting of form data by the user.
+   * @return The ManageSurfer page will clear upon valid input.
+   */
+  public static Result postSurfer() {
+    Form<SurferFormData> formData = Form.form(SurferFormData.class).bindFromRequest();
     
+    if (formData.hasErrors()) {
+      Map<String, Boolean> surferTypeMap = SurferTypes.getTypes();
+      List<String> surferStyleList = FootstyleTypes.getStyle();
+      return badRequest(ManageSurfer.render(formData, surferTypeMap, SurferDB.getSurfer(), "other", surferStyleList));
+    }
+    else {
+      SurferFormData data = formData.get();
+      
+      /** Clears the form when button is clicked */
+      Form<SurferFormData> formData2 = Form.form(SurferFormData.class);
+      SurferDB.addSurfer(data);
+      Map<String, Boolean> surferTypeMap = SurferTypes.getTypes(data.type);
+      List<String> surferStyleList = FootstyleTypes.getStyle();
+      return ok(ManageSurfer.render(formData2, surferTypeMap, SurferDB.getSurfer(), "other", surferStyleList));
+    }
   }
   
   /**
-   * Returns page of Noa Mizuno
-   * @return The Noa.
+   * getSurfer(String) returns the ShowSurfer page showing the surfer's info.
+   * @param slug = unique String value of a surfer
+   * @return the ShowSurfer page with surfer's info
    */
-  public static Result Noa() {
-    return ok(Noa.render("Noa Mizuno"));
-    
+  public static Result getSurfer(String slug) {
+    return ok(ShowSurfer.render(SurferDB.getSurfer(slug), SurferDB.getSurfer()));
   }
   
   /**
-   * Returns page of Laird.
-   * @return The Laird.
+   * deletes a surfer.
+   * @param slug of surfer
+   * @return Index page
    */
-  public static Result Laird() {
-    return ok(Laird.render("Laird Hamilton"));
-    
+  public static Result deleteSurfer(String slug) {
+    SurferDB.deleteSurfer(slug);
+    return ok(Index.render(SurferDB.getSurfer()));
   }
   
   /**
-   * Returns page of Kalanid
-   * @return The Kalanid.
+   * 
    */
-  public static Result Kalanid() {
-    return ok(Kalanid.render("Kalani David"));
-    
-  }
-  
-  /**
-   * Returns page of Malia Manuel.
-   * @return The Malia.
-   */
-  public static Result Malia() {
-    return ok(Malia.render("Malia Manuel."));
-    
+  public static Result getUpdates() {
+    return ok(Updates.render(SurferDB.getSurfer(), UpdateDB.getUpdates()));
   }
 }
+
+

@@ -1,4 +1,4 @@
-@(page: String)(content: Html)
+@(surfers: List[Surfer])(content: Html)
 
 <!DOCTYPE html>
 
@@ -38,29 +38,47 @@
           <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Males<b
               class="caret"></b></a>
             <ul class="dropdown-menu" role="menu">
-              <li><a href="@routes.Application.Koloheandino()">Kolohe Andino</a></li>
-              <li><a href="@routes.Application.Laird()">Laird Hamilton</a></li>
-              <li><a href="@routes.Application.Kalanid()">Kalani David</a></li>
+            
+            <!-- loops through the surfer list and creates a list item for each surfer of Male type -->
+            @for(surfer <- surfers) {
+              @if(surfer.getType() == "Male") {
+                <li><a href="@routes.Application.getSurfer(surfer.getSlug())">@surfer.getName()</a></li>
+              }
+            }
               
             </ul>
           </li>
             
-            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Females<b
+          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Females<b
               class="caret"></b></a>
             <ul class="dropdown-menu" role="menu">
-              <li><a href="@routes.Application.Keliamoniz()">Kelia Moniz</a></li>
-              <li><a href="@routes.Application.Malia()">Malia Manuel</a></li>
-            </ul>
             
+             <!-- loops through the surfer list and creates a list item for each surfer of Female type -->
+             @for(surfer <- surfers) {
+              @if(surfer.getType() == "Female") {
+                <li><a href="@routes.Application.getSurfer(surfer.getSlug())">@surfer.getName()</a></li>
+              }
+            }
+            
+            </ul>
           </li>
           
           <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Groms<b
               class="caret"></b></a>
             <ul class="dropdown-menu" role="menu">
-              <li><a href="@routes.Application.Noa()">Noa Mizuno</a></li>
+            
+              <!-- loops through the surfer list and creates a list item for each surfer of Grom type -->
+              @for(surfer <- surfers) {
+              @if(surfer.getType() == "Grom") {
+                <li><a href="@routes.Application.getSurfer(surfer.getSlug())">@surfer.getName()</a></li>
+              }
+            }
+            
             </ul>
           </li>
-            
+          
+          <li><a href="@routes.Application.newSurfer()">New</a></li>
+          <li><a href="@routes.Application.getUpdates()">Updates</a></li>
         </ul>
       </div>
     </div>

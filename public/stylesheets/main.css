@@ -1,4 +1,14 @@
+.carousel-image {
+  background-size: cover;
+  background-position: center;
+  height: 385px;
+}
 
+.bio-image {
+  background-size: cover;
+  background-position: center;
+  height: 250px;
+}
 
 .header {
   background-image: url(../images/surfer5.png);
@@ -7,63 +17,7 @@
   height: 250px;
 }
 
-.andino {
-  background: url(../images/KoloheAndino_02.jpg);
-  background-size: cover;
-  background-position: center;
-  height: 385px;
-}
-
-.moniz {
-  background: url(../images/km31.jpg);
-  background-size: cover;
-  background-position: center;
-  height: 385px;
-}
-
-.noa {
-  background: url(../images/noa-mizuno.jpg);
-  background-size: cover;
-  background-position: center;
-  height: 385px;
-}
-
-.noa-carousel {
-  background: url(../images/noa-mizuno2.jpg);
-  background-size: cover;
-  background-position: center;
-  height: 385px;
-}
-
-.laird {
-  background: url(../images/LairdHamilton.jpg);
-  background-size: cover;
-  background-position: right;
-  height: 385px;
-}
-
-.kalani-pic {
-  background: url(../images/kd.jpg);
-  background-size: cover;
-  background-position: left;
-  height: 385px;
-}
-
-.kalani-carousel {
-  background: url(../images/kd2.jpg);
-  background-size: cover;
-  background-position: center;
-  height: 385px;
-}
-
 .page-content {
   padding: 10px;
   text-align: center;
-}
-
-.manuel {
-  background-image:url('../images/malia.jpg');
-  background-size: cover;
-  background-position: center;
-  height: 385px;
 }
