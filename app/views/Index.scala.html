@@ -1,6 +1,6 @@
-@(surfers: List[Surfer])
+@(surfers: List[Surfer], isLoggedIn: Boolean, userInfo: UserInfo)
 
-@Main(surfers) {
+@Main(surfers, isLoggedIn, userInfo) {
 <div class="page-content">
   <div id="carousel-example-generic" class="carousel slide">
     <!-- Indicators -->
