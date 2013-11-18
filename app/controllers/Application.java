@@ -33,6 +33,7 @@ public class Application extends Controller {
    * 
    * @return a page to put in information about a new surfer.
    */
+  @Security.Authenticated(Secured.class)
   public static Result newSurfer() {
     SurferFormData data = new SurferFormData();
     data.id = 0;
@@ -48,6 +49,7 @@ public class Application extends Controller {
    * @param slug the unique ID belonging to the surfer.
    * @return The page to edit the surfer's information.
    */
+  @Security.Authenticated(Secured.class)
   public static Result manageSurfer(String slug) {
     SurferFormData data = new SurferFormData(SurferDB.getSurfer(slug));
     Form<SurferFormData> formData = Form.form(SurferFormData.class).fill(data);
@@ -60,6 +62,7 @@ public class Application extends Controller {
    * 
    * @return the page containing the surfer and their information.
    */
+  @Security.Authenticated(Secured.class)
   public static Result postSurfer() {
     Form<SurferFormData> formData = Form.form(SurferFormData.class).bindFromRequest();
 
