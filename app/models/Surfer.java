@@ -1,13 +1,19 @@
-/**
- * 
- */
 package models;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import play.db.ebean.Model;
 
 /**
  * @author scotthonda
  *
  */
-public class Surfer {
+@Entity
+public class Surfer extends Model {
+  
+  private static final long serialVersionUID = 1L;
+  
+  @Id
   private long id;
   private String name;
   private String home;
@@ -20,6 +26,14 @@ public class Surfer {
   private String style;
   
   /**
+   * finds a surfer.
+   * @return a surfer
+   */
+  public static Finder<Long, Surfer> find() {
+    return new Finder<Long, Surfer>(Long.class, Surfer.class);
+  }
+  
+  /**
    * Creates a new surfer.
    * @param id = id
    * @param name = name of surfer
@@ -30,6 +44,7 @@ public class Surfer {
    * @param bio = biography of surfer
    * @param slug = slug of surfer's page
    * @param type = type of surfer (Male, Female, or Grom)
+   * @param style = footstyle
    */
   public Surfer(long id, String name, String home, String awards, String carouselUrl, String bioUrl,
                 String bio, String slug, String type, String style) {

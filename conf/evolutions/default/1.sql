@@ -3,6 +3,20 @@
 
 # --- !Ups
 
+create table surfer (
+  id                        bigint auto_increment not null,
+  name                      varchar(255),
+  home                      varchar(255),
+  awards                    varchar(255),
+  carousel_url              varchar(255),
+  bio_url                   varchar(255),
+  bio                       varchar(255),
+  slug                      varchar(255),
+  type                      varchar(255),
+  style                     varchar(255),
+  constraint pk_surfer primary key (id))
+;
+
 create table updating (
   id                        bigint auto_increment not null,
   date                      varchar(255),
@@ -29,6 +43,8 @@ create index ix_updating_userInfo_1 on updating (user_info_id);
 # --- !Downs
 
 SET FOREIGN_KEY_CHECKS=0;
+
+drop table surfer;
 
 drop table updating;
 
