@@ -24,6 +24,7 @@ public class Surfer extends Model {
   private String slug;
   private String type;
   private String style;
+  private String country;
   
   /**
    * finds a surfer.
@@ -45,9 +46,10 @@ public class Surfer extends Model {
    * @param slug = slug of surfer's page
    * @param type = type of surfer (Male, Female, or Grom)
    * @param style = footstyle
+   * @param country = surfer's home nation
    */
   public Surfer(long id, String name, String home, String awards, String carouselUrl, String bioUrl,
-                String bio, String slug, String type, String style) {
+                String bio, String slug, String type, String style, String country) {
     this.id = id;
     this.name = name;
     this.home = home;
@@ -57,7 +59,8 @@ public class Surfer extends Model {
     this.bio = bio;
     this.slug = slug;
     this.type = type;
-    this.setStyle(style);
+    this.style = style;
+    this.country = country;
   }
   
   /**
@@ -191,6 +194,20 @@ public class Surfer extends Model {
    */
   public void setStyle(String style) {
     this.style = style;
+  }
+
+  /**
+   * @return the country
+   */
+  public String getCountry() {
+    return country;
+  }
+
+  /**
+   * @param country the country to set
+   */
+  public void setCountry(String country) {
+    this.country = country;
   }
 
 }

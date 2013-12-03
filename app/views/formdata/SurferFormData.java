@@ -22,10 +22,10 @@ public class SurferFormData {
    * @param bio of surfer
    * @param slug of surfer
    * @param type of surfer
-   * 
+   * @param style of surfer
    */
   public SurferFormData(String name, String home, String awards, String carouselUrl, String bioUrl, String bio,
-      String slug, String type, String style) {
+      String slug, String type, String style, String country) {
     super();
     this.name = name;
     this.home = home;
@@ -36,6 +36,7 @@ public class SurferFormData {
     this.slug = slug;
     this.type = type; 
     this.style = style;
+    this.country = country;
   }
   
   /** the id field. */
@@ -58,6 +59,8 @@ public class SurferFormData {
   public String type = "";
   /** the style. */
   public String style = "";
+  /** the country. */
+  public String country = "";
   
   /**
    * default constructor.
@@ -81,6 +84,7 @@ public class SurferFormData {
     this.slug = surfer.getSlug();
     this.type = surfer.getType();
     this.style = surfer.getStyle();
+    this.country = surfer.getCountry();
   }
   
   

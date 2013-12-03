@@ -23,21 +23,23 @@ public class SurferDB {
   public static Surfer addSurfer(SurferFormData formData) {
     String slugVal = formData.slug;
     long idVal = (formData.id == 0) ? surfers.size() + 1 : formData.id;
-    Surfer surfer = new Surfer(idVal, formData.name, formData.home, formData.awards,
-        formData.carouselUrl, formData.bioUrl, formData.bio, formData.slug, formData.type, formData.style);
+    Surfer surfer =
+        new Surfer(idVal, formData.name, formData.home, formData.awards, formData.carouselUrl, formData.bioUrl,
+            formData.bio, formData.slug, formData.type, formData.style, formData.country);
     if (SurferDB.exists(formData.slug)) {
       Date now = new Date();
       String surferName = formData.name;
-      UpdateDB.addUpdates(new Updating(DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT).format(now) +"",
-                          "Edit", surferName));
-    } else {
+      UpdateDB.addUpdates(new Updating(DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT).format(now)
+          + "", "Edit", surferName));
+    }
+    else {
       Date now = new Date();
       String surferName = formData.name;
-      UpdateDB.addUpdates(new Updating(DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT).format(now) +"",
-                          "Create", surferName));
+      UpdateDB.addUpdates(new Updating(DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT).format(now)
+          + "", "Create", surferName));
     }
-    surfers.put(slugVal, surfer); 
-    
+    surfers.put(slugVal, surfer);
+
     surfer.save();
     return surfer;
   }

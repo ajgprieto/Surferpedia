@@ -10,10 +10,11 @@ create table surfer (
   awards                    varchar(255),
   carousel_url              varchar(255),
   bio_url                   varchar(255),
-  bio                       varchar(255),
+  bio                       text,
   slug                      varchar(255),
   type                      varchar(255),
   style                     varchar(255),
+  country                   varchar(255),
   constraint pk_surfer primary key (id))
 ;
 

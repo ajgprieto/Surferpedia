@@ -12,9 +12,11 @@
       <div class="well">
         <h2>@surfer.getName() </h2>
         <p><b>Home Town: </b> @surfer.getHome()</p>
+        <p><b>Country: </b> @surfer.getCountry()</p>
         <p><b>Awards: </b> @surfer.getAwards()</p>
         <p><b>Foot Style: </b> @surfer.getStyle()</p>
         <p><b>Biography: </b> @surfer.getBio()</p>
+        
         @if(isLoggedIn) {
         <p>
            <!-- goes to the ManageSurfer page to edit info -->
