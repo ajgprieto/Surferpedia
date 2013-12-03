@@ -1,16 +1,11 @@
 package models;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * Provides an in-memory repository for UserInfo.
  * Storing credentials in the clear is kind of bogus.
  * @author Philip Johnson
  */
 public class UserInfoDB {
-  
-  //private static Map<String, UserInfo> userinfos = new HashMap<String, UserInfo>();
   
   /**
    * Defines the admin account.
@@ -32,7 +27,6 @@ public class UserInfoDB {
    */
   public static boolean adminDefined() {
     UserInfo userInfo = UserInfo.find().where().eq("admin", true).findUnique();
-    
     return userInfo != null;
   }
   
