@@ -38,7 +38,7 @@ public class SurferDB {
     }
     surfers.put(slugVal, surfer); 
     
-   
+    surfer.save();
     return surfer;
   }
   
