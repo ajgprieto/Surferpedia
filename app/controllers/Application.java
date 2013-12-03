@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import models.SurferDB;
-import models.Update;
+import models.Updating;
 import models.UpdateDB;
 import play.data.Form;
 import play.mvc.Controller;

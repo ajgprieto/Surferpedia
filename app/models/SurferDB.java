@@ -28,12 +28,12 @@ public class SurferDB {
     if (SurferDB.exists(formData.slug)) {
       Date now = new Date();
       String surferName = formData.name;
-      UpdateDB.addUpdates(new Update(DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT).format(now) +"",
+      UpdateDB.addUpdates(new Updating(DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT).format(now) +"",
                           "Edit", surferName));
     } else {
       Date now = new Date();
       String surferName = formData.name;
-      UpdateDB.addUpdates(new Update(DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT).format(now) +"",
+      UpdateDB.addUpdates(new Updating(DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT).format(now) +"",
                           "Create", surferName));
     }
     surfers.put(slugVal, surfer); 
@@ -72,7 +72,7 @@ public class SurferDB {
   public static void deleteSurfer(String slug) {
     Date now = new Date();
     String surferName = SurferDB.getSurfer(slug).getName();
-    UpdateDB.addUpdates(new Update(DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT).format(now) +"",
+    UpdateDB.addUpdates(new Updating(DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT).format(now) +"",
                         "Delete", surferName));
     surfers.remove(slug);
   }

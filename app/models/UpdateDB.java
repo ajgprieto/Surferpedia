@@ -11,19 +11,20 @@ import java.util.List;
  *
  */
 public class UpdateDB {
-  private static List<Update> updates = new ArrayList<>();
 
   /**
    * @return the all the updates
    */
-  public static List<Update> getUpdates() {
-    return updates;
+  public static List<Updating> getUpdates() {
+    List<Updating> updatings = new ArrayList<>();
+    updatings = Updating.find().all();
+    return updatings;
   }
 
   /**
-   * @param update the update to be added
+   * @param updating the update to be added
    */
-  public static void addUpdates(Update update) {
-    updates.add(update);
+  public static void addUpdates(Updating updating) {
+    updating.save();
   } 
 }
