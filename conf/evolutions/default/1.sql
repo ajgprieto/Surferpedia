@@ -10,7 +10,7 @@ create table surfer (
   awards                    varchar(255),
   carousel_url              varchar(255),
   bio_url                   varchar(255),
-  bio                       text,
+  bio                       longtext,
   slug                      varchar(255),
   type                      varchar(255),
   style                     varchar(255),

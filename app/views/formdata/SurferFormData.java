@@ -23,10 +23,10 @@ public class SurferFormData {
    * @param slug of surfer
    * @param type of surfer
    * @param style of surfer
+   * @param country of surfer
    */
   public SurferFormData(String name, String home, String awards, String carouselUrl, String bioUrl, String bio,
       String slug, String type, String style, String country) {
-    super();
     this.name = name;
     this.home = home;
     this.awards = awards;
@@ -74,7 +74,6 @@ public class SurferFormData {
    * @param surfer surfer instance
    */
   public SurferFormData(Surfer surfer) {
-    this.id = surfer.getId();
     this.name = surfer.getName();
     this.home = surfer.getHome();
     this.awards = surfer.getAwards();
@@ -126,7 +125,7 @@ public class SurferFormData {
       errors.add(new ValidationError("slug", "Slug must contain only digits or characters"));
     }
     
-    if (SurferDB.exists(slug) && SurferDB.isEdit(slug, id)) { 
+    if (SurferDB.exists(slug) && !SurferDB.isEdit(slug)) { 
       errors.add(new ValidationError("slug", "Slug must be unique"));
     }
     

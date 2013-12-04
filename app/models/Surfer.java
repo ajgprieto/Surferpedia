@@ -2,6 +2,7 @@ package models;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import play.db.ebean.Model;
 
 /**
@@ -20,6 +21,7 @@ public class Surfer extends Model {
   private String awards;
   private String carouselUrl;
   private String bioUrl;
+  @Lob
   private String bio;
   private String slug;
   private String type;
@@ -36,7 +38,6 @@ public class Surfer extends Model {
   
   /**
    * Creates a new surfer.
-   * @param id = id
    * @param name = name of surfer
    * @param home = home of surfer
    * @param awards = awards of surfer
@@ -48,9 +49,8 @@ public class Surfer extends Model {
    * @param style = footstyle
    * @param country = surfer's home nation
    */
-  public Surfer(long id, String name, String home, String awards, String carouselUrl, String bioUrl,
+  public Surfer(String name, String home, String awards, String carouselUrl, String bioUrl,
                 String bio, String slug, String type, String style, String country) {
-    this.id = id;
     this.name = name;
     this.home = home;
     this.awards = awards;

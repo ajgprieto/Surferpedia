@@ -1,109 +1,111 @@
 package models;
 
 import java.text.DateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import views.formdata.SurferFormData;
 
 /**
  * Provides a simple in-memory repo for Surfer data.
+ * 
  * @author scotthonda
  */
 public class SurferDB {
-  private static Map<String, Surfer> surfers = new HashMap<>();
-  
+
   /**
    * Creates and returns a new contact, storing in memory.
-   * @param formData 
-   * @return new contact
+   * 
+   * @param formData the formData
    */
-  public static Surfer addSurfer(SurferFormData formData) {
+  public static void addSurfer(SurferFormData formData) {
     String slugVal = formData.slug;
-    long idVal = (formData.id == 0) ? surfers.size() + 1 : formData.id;
-    Surfer surfer =
-        new Surfer(idVal, formData.name, formData.home, formData.awards, formData.carouselUrl, formData.bioUrl,
-            formData.bio, formData.slug, formData.type, formData.style, formData.country);
-    if (SurferDB.exists(formData.slug)) {
-      Date now = new Date();
-      String surferName = formData.name;
+    Surfer surfers;
+
+    Date now = new Date();
+    if (!exists(slugVal)) {
+      surfers =
+          new Surfer(formData.name, formData.home, formData.awards, formData.carouselUrl, formData.bioUrl,
+              formData.bio, formData.slug, formData.type, formData.style, formData.country);
+      surfers.save();
+
       UpdateDB.addUpdates(new Updating(DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT).format(now)
-          + "", "Edit", surferName));
+          + "", "Create", formData.name));
     }
     else {
-      Date now = new Date();
-      String surferName = formData.name;
-      UpdateDB.addUpdates(new Updating(DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT).format(now)
-          + "", "Create", surferName));
-    }
-    surfers.put(slugVal, surfer);
+      // Edit not working
+      surfers = getSurfer(slugVal);
+      surfers.setName(formData.name);
+      surfers.setHome(formData.home);
+      surfers.setAwards(formData.awards);
+      surfers.setCarouselUrl(formData.carouselUrl);
+      surfers.setBioUrl(formData.bioUrl);
+      surfers.setBio(formData.bio);
+      surfers.setType(formData.type);
+      surfers.setStyle(formData.style);
+      surfers.setCountry(formData.country);
+      surfers.save();
 
-    surfer.save();
-    return surfer;
+      UpdateDB.addUpdates(new Updating(DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT).format(now)
+          + "", "Edit", formData.name));
+    }
   }
-  
+
   /**
    * Returns a list containing all defined surfers.
-   * @return surfers
+   * 
+   * @return a List containing all of the surfers
    */
-  public static List<Surfer> getSurfer() {
-    return new ArrayList<>(surfers.values());
+  public static List<Surfer> getSurfers() {
+    return Surfer.find().all();
   }
-  
+
   /**
-   * Returns a contact instance associated with the passed id, or throws a RuntimeException if the
-   * Id is not found.
+   * Returns a contact instance associated with the passed id, or throws a RuntimeException if the Id is not found.
+   * 
    * @param slug gets instance of surfer
    * @return Surfer
    * 
    */
   public static Surfer getSurfer(String slug) {
-    Surfer surfer = surfers.get(slug);
-    if (surfer == null) {
-      throw new RuntimeException("Passed a bogus id: " + slug);
-    }
-    return surfer;
+    return Surfer.find().where().eq("slug", slug).findUnique();
   }
-  
+
   /**
    * deletes a surfer.
+   * 
    * @param slug gets instance of surfer
    */
   public static void deleteSurfer(String slug) {
     Date now = new Date();
     String surferName = SurferDB.getSurfer(slug).getName();
-    UpdateDB.addUpdates(new Updating(DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT).format(now) +"",
-                        "Delete", surferName));
-    surfers.remove(slug);
+    Surfer surfer = Surfer.find().where().eq("slug", slug).findUnique();
+    if (surfer != null) {
+      surfer.delete();
+
+      UpdateDB.addUpdates(new Updating(DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT).format(now)
+          + "", "Delete", surferName));
+    }
+    else {
+      throw new RuntimeException("Passed a non slug: " + slug);
+    }
   }
-  
+
   /**
    * checks to see if a slug already exists.
+   * 
    * @param slug gets instance of surfer
    * @return false if slug is not used, true otherwise
    */
   public static boolean exists(String slug) {
-    Surfer surfer = surfers.get(slug);
-    if (surfer == null) {
-      return false;
-    } 
-    return true;
+    return getSurfer(slug) != null;
   }
-  
+
   /**
-   * checks to see if slug is in edit mode.
-   * @param slug of surfer
-   * @param id of surfer
-   * @return false if id passed matched id of surfer, true if not to execute error
+   * Checks to see if the slug exists, if exists, slug is in edit mode.
+   * @param slug the slug
+   * @return true if slug exists
    */
-  public static boolean isEdit(String slug, long id) {
-    Surfer surfer = surfers.get(slug);
-    if (surfer.getId() == id) {
-      return false;
-    }
-    return true;
+  public static boolean isEdit(String slug) {
+    return !(getSurfer(slug) == null);
   }
-  
 }
